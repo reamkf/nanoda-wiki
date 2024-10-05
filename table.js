@@ -335,6 +335,7 @@
 					type: "search",
 					placeholder: "キーワードで絞り込み",
 					"data-column": "all",
+					style: "width: 300px"
 				}).appendTo($divInputTableFilter);
 
 				$table.before($divInputTableFilter);
