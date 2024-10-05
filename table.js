@@ -2,6 +2,7 @@
 //  tablesorter
 //  URL: https://cdnjs.com/libraries/jquery.tablesorter
 // =====================================================================================
+console.log('table.js');
 function loadScript(src, integrity, crossorigin, referrerpolicy) {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
