@@ -66,7 +66,7 @@ function addCSS(css){
 
 async function main() {
     try {
-        await loadScriptWithCacheBuster('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/table.js', {
+        await loadScriptWithCacheBuster('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.0.1/table.js', {
 			retryCount: 2,
 			retryDelay: 2000,
 			cacheBusterParam: '_nocache'
