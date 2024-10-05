@@ -2,6 +2,10 @@
 //  tablesorter
 //  URL: https://cdnjs.com/libraries/jquery.tablesorter
 // =====================================================================================
+document.addEventListener('DOMContentLoaded', (event) => {
+	main();
+});
+
 console.log('table.js');
 function loadScript(src, integrity, crossorigin, referrerpolicy) {
     return new Promise((resolve, reject) => {
@@ -483,6 +487,3 @@ async function main() {
         console.error("Error in main function:", error);
     }
 }
-
-// メイン関数を実行
-main();
