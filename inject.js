@@ -38,7 +38,7 @@ function addCSS(css){
 
 async function main() {
     try {
-        await loadScript('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.0.2/hello.js');
+        await loadScript('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.0.7/table.js');
     } catch (error) {
         console.error("Error in main function:", error);
     }
