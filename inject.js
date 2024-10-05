@@ -2,21 +2,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	main();
 });
 
-
-// =====================================================================================
-//  tablesorter
-//  URL: https://cdnjs.com/libraries/jquery.tablesorter
-// =====================================================================================
-function loadScript(src, attributes = {}) {
+console.log('table.js');
+function loadScript(src, integrity, crossorigin, referrerpolicy) {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = src;
-
-        // Set custom attributes
-        for (const [key, value] of Object.entries(attributes)) {
-            script.setAttribute(key, value);
-        }
-
+        if(integrity) script.integrity = integrity;
+        if(crossorigin) script.crossOrigin = crossorigin;
+        if(referrerpolicy) script.referrerPolicy = referrerpolicy;
         script.onload = resolve;
         script.onerror = reject;
         document.head.appendChild(script);
@@ -32,32 +25,29 @@ function addCSS(css){
 async function loadTableSorterScripts() {
     const scripts = [
         {
-            src: "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js",
-            attributes: {
-                integrity: "sha512-qzgd5cYSZcosqpzpn7zF2ZId8f/8CHmFKZ8j7mU4OUXTNRd5g+ZHBPsgKEwoqxCtdQvExE5LprwwPAgoicguNg==",
-                crossorigin: "anonymous",
-                referrerpolicy: "no-referrer"
-            }
+            src: "https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/table.js",
+            integrity: "sha512-qzgd5cYSZcosqpzpn7zF2ZId8f/8CHmFKZ8j7mU4OUXTNRd5g+ZHBPsgKEwoqxCtdQvExE5LprwwPAgoicguNg==",
+            crossorigin: "anonymous",
+            referrerpolicy: "no-referrer"
         },
         {
             src: "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js",
-            attributes: {
-                integrity: "sha512-dj/9K5GRIEZu+Igm9tC16XPOTz0RdPk9FGxfZxShWf65JJNU2TjbElGjuOo3EhwAJRPhJxwEJ5b+/Ouo+VqZdQ==",
-                crossorigin: "anonymous",
-                referrerpolicy: "no-referrer"
-            }
+            integrity: "sha512-dj/9K5GRIEZu+Igm9tC16XPOTz0RdPk9FGxfZxShWf65JJNU2TjbElGjuOo3EhwAJRPhJxwEJ5b+/Ouo+VqZdQ==",
+            crossorigin: "anonymous",
+            referrerpolicy: "no-referrer"
         }
     ];
 
     for (const script of scripts) {
         try {
-            await loadScript(script.src, script.attributes);
+            await loadScript(script.src, script.integrity, script.crossorigin, script.referrerpolicy);
             console.log(`Successfully loaded: ${script.src}`);
         } catch (error) {
             console.error(`Failed to load script: ${script.src}`, error);
         }
     }
 }
+
 
 async function main() {
     try {
