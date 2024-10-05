@@ -1,10 +1,6 @@
 // @ https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/table.js
 
 (() => {
-	document.addEventListener('DOMContentLoaded', (event) => {
-		main();
-	});
-
 	/**
 	* 指定されたソースからスクリプトを読み込み、成功時と失敗時にそれぞれ解決または拒否されるPromiseを返します。
 	* @param {string} src - スクリプトのソースURL。
