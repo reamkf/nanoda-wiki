@@ -3,58 +3,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 /**
- * キャッシュバスターを使用してスクリプトを読み込む関数
- * @param {string} src - スクリプトのURL
- * @param {Object} options - 追加のオプション
- * @returns {Promise<void>} スクリプトの読み込みの完了を示すPromise
+ * 指定されたソースからスクリプトを読み込み、成功時と失敗時にそれぞれ解決または拒否されるPromiseを返します。
+ * @param {string} src - スクリプトのソースURL。
+ * @param {Object} attributes - スクリプト要素に追加する任意の属性。
+ * @returns {Promise<void>} スクリプトの読み込みの完了を示すPromise。
  */
-function loadScriptWithCacheBuster(src, options = {}) {
-    const {
-        retryCount = 3,
-        retryDelay = 1000,
-        cacheBusterParam = '_v'
-    } = options;
+function loadScript(src, attributes = {}) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
 
-    // キャッシュバスターを追加するヘルパー関数
-    function addCacheBuster(url) {
-        const cacheBuster = `${cacheBusterParam}=${Date.now()}`;
-        const separator = url.includes('?') ? '&' : '?';
-        return `${url}${separator}${cacheBuster}`;
-    }
-
-    // スクリプトを読み込む関数
-    function loadScript(url) {
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = url;
+        // デフォルトでcrossorigin属性を設定
+        if (!attributes.hasOwnProperty('crossorigin')) {
             script.crossOrigin = 'anonymous';
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.appendChild(script);
-        });
-    }
-
-    // リトライロジック
-    async function retry(fn, retriesLeft = retryCount) {
-        try {
-            return await fn();
-        } catch (error) {
-            if (retriesLeft === 0) throw error;
-            await new Promise(resolve => setTimeout(resolve, retryDelay));
-            return retry(fn, retriesLeft - 1);
         }
-    }
 
-    // キャッシュバスターを追加したURLでスクリプトを読み込む
-    const srcWithCacheBuster = addCacheBuster(src);
-    console.log(`Loading script: ${srcWithCacheBuster}`);
+        // Set custom attributes
+        for (const [key, value] of Object.entries(attributes)) {
+            script.setAttribute(key, value);
+        }
 
-    return retry(() => loadScript(srcWithCacheBuster))
-        .then(() => console.log('Script loaded successfully'))
-        .catch((error) => {
-            console.error('Failed to load script:', error);
-            throw error;
-        });
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
 }
 
 function addCSS(css){
@@ -66,11 +38,7 @@ function addCSS(css){
 
 async function main() {
     try {
-        await loadScriptWithCacheBuster('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.0.1/table.js', {
-			retryCount: 2,
-			retryDelay: 2000,
-			cacheBusterParam: '_nocache'
-		})
+        await loadScript('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.0.2/table.js');
     } catch (error) {
         console.error("Error in main function:", error);
     }
