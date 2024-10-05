@@ -3,20 +3,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 /**
- * 指定されたソースからスクリプトを読み込み、integrityを自動計算して属性を設定します。
- * 失敗した場合はintegrity無しで再試行します。
+ * 指定されたソースからスクリプトを読み込み、複数の戦略を使用してintegrityを処理します。
  * @param {string} src - スクリプトのソースURL。
- * @param {Object} attributes - スクリプト要素に追加する任意の属性。
+ * @param {Object} options - 追加のオプション。
  * @returns {Promise<void>} スクリプトの読み込みの完了を示すPromise。
  */
-async function loadScript(src, attributes = {}) {
+async function loadScript(src, options = {}) {
+    const {
+        bypassCache = true,
+        allowNoIntegrity = false,
+        retryTimeout = 1000,
+        maxRetries = 3
+    } = options;
+
+    // キャッシュをバイパスするためのURLパラメータを追加
+    function addCacheBuster(url) {
+        const cacheBuster = `_=${Date.now()}`;
+        return url.includes('?') ? `${url}&${cacheBuster}` : `${url}?${cacheBuster}`;
+    }
+
     // SRIハッシュを計算する関数 (SHA-512を使用)
     async function calculateSRI(url) {
         try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const buffer = await response.arrayBuffer();
             const hashBuffer = await crypto.subtle.digest('SHA-512', buffer);
             const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -33,40 +43,48 @@ async function loadScript(src, attributes = {}) {
         return new Promise((resolve, reject) => {
             const script = document.createElement('script');
             script.src = scriptSrc;
-
-            if (scriptIntegrity) {
-                script.integrity = scriptIntegrity;
-            }
-
-            // デフォルトでcrossorigin属性を設定
+            if (scriptIntegrity) script.integrity = scriptIntegrity;
             script.crossOrigin = 'anonymous';
-
-            // Set custom attributes
-            for (const [key, value] of Object.entries(attributes)) {
-                script.setAttribute(key, value);
-            }
-
             script.onload = resolve;
             script.onerror = reject;
             document.head.appendChild(script);
         });
     }
 
+    // リトライロジック
+    async function retryLoad(loadFn, retries = 0) {
+        try {
+            return await loadFn();
+        } catch (error) {
+            if (retries >= maxRetries) throw error;
+            await new Promise(resolve => setTimeout(resolve, retryTimeout));
+            return retryLoad(loadFn, retries + 1);
+        }
+    }
+
+    const finalSrc = bypassCache ? addCacheBuster(src) : src;
+
     try {
         // まず、integrityを計算してスクリプトを読み込む
-        const integrity = await calculateSRI(src);
+        const integrity = await calculateSRI(finalSrc);
         console.log(`Calculated integrity: ${integrity}`);
-        await loadScriptElement(src, integrity);
+        await retryLoad(() => loadScriptElement(finalSrc, integrity));
         console.log('Script loaded successfully with integrity');
     } catch (error) {
-        console.warn('Failed to load script with integrity. Retrying without integrity...', error);
-        try {
-            // integrity無しで再試行
-            await loadScriptElement(src);
-            console.log('Script loaded successfully without integrity');
-        } catch (retryError) {
-            console.error('Failed to load script even without integrity:', retryError);
-            throw retryError;
+        console.warn('Failed to load script with calculated integrity:', error);
+
+        if (allowNoIntegrity) {
+            console.warn('Attempting to load script without integrity check...');
+            try {
+                await retryLoad(() => loadScriptElement(finalSrc));
+                console.log('Script loaded successfully without integrity');
+            } catch (retryError) {
+                console.error('Failed to load script even without integrity:', retryError);
+                throw retryError;
+            }
+        } else {
+            console.error('Script loading failed and loading without integrity is not allowed.');
+            throw error;
         }
     }
 }
@@ -80,7 +98,12 @@ function addCSS(css){
 
 async function main() {
     try {
-        await loadScript('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/table.js');
+        await loadScript('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/table.js', {
+			bypassCache: true,
+			allowNoIntegrity: true,
+			retryTimeout: 2000,
+			maxRetries: 2
+		})
     } catch (error) {
         console.error("Error in main function:", error);
     }
