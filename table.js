@@ -335,7 +335,7 @@
 					type: "search",
 					placeholder: "キーワードで絞り込み",
 					"data-column": "all",
-					style: "width: 300px"
+					style: "width: 300px; background-color: #fff; border: 1px #ccc solid;",
 				}).appendTo($divInputTableFilter);
 
 				$table.before($divInputTableFilter);
