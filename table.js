@@ -328,14 +328,14 @@
 				// External any-column search
 				const $divInputTableFilter = $("<div>", {
 					"class": "input-table-filter input-table-filter-ex",
-					style: "width: 400px"
+					style: "width: 80vw"
 				});
 
 				const $inputTableFilter = $("<input>", {
 					type: "search",
 					placeholder: "キーワードで絞り込み",
 					"data-column": "all",
-					style: "width: 300px; background-color: #fff; border: 1px #ccc solid;",
+					style: "width: 100%; background-color: #fff; border: 1px #ccc solid;",
 				}).appendTo($divInputTableFilter);
 
 				$table.before($divInputTableFilter);
