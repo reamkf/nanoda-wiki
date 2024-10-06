@@ -39,7 +39,7 @@
 
 	async function main() {
 		try {
-			await loadScript('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.0.10/table.js');
+			await loadScript('https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/table.js');
 		} catch (error) {
 			console.error("Error in main function:", error);
 		}

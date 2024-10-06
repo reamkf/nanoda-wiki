@@ -35,7 +35,6 @@
 	}
 
 	document.addEventListener('DOMContentLoaded', (event) => {
-		console.log('DOM fully loaded and parsed');
 		main();
 	});
 
@@ -45,7 +44,6 @@
 	// =====================================================================================
 
 	async function loadTableSorterScripts() {
-		console.log('Starting to load TableSorter scripts');
 		const scripts = [
 			{
 				src: "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js",
@@ -68,7 +66,6 @@
 		for (const script of scripts) {
 			try {
 				await loadScript(script.src, script.attributes);
-				console.log(`Successfully loaded: ${script.src}`);
 			} catch (error) {
 				console.error(`Failed to load script: ${script.src}`, error);
 			}
@@ -76,14 +73,11 @@
 	}
 
 	async function main() {
-		console.log('Entering main function');
 		try {
 			// TableSorterスクリプトを読み込む
 			await loadTableSorterScripts();
 
 			// スクリプト読み込み完了後の処理をここに記述
-			console.log("All TableSorter scripts loaded successfully");
-
 			addCSS(`
 				/*************
 				Blue Theme
@@ -319,16 +313,14 @@
 					display: none !important;
 				}
 			`);
-			console.log('CSS added successfully');
 
 			$("table.filter").each(function(i){
-				console.log(`Initializing table ${i + 1}`);
 				const $table = $(this);
 
 				// External any-column search
 				const $divInputTableFilter = $("<div>", {
 					"class": "input-table-filter input-table-filter-ex",
-					style: "width: 80vw"
+					style: "width: 400px"
 				});
 
 				const $inputTableFilter = $("<input>", {
@@ -339,7 +331,6 @@
 				}).appendTo($divInputTableFilter);
 
 				$table.before($divInputTableFilter);
-				console.log('External filter input added');
 
 				// Drop down menu
 				const filterFunc = null;
@@ -368,7 +359,6 @@
 				//     i++;
 				// });
 
-				console.log('Initializing tablesorter');
 				$table.tablesorter({
 					theme: 'blue',
 
@@ -507,30 +497,10 @@
 						filter_selectSourceSeparator : '|'
 					}
 				});
-				console.log(`Table ${i + 1} initialized with tablesorter`);
-
-				// Add event listeners
-				addTableEventListeners($table);
 			});
 
 		} catch (error) {
 			console.error("Error in main function:", error);
 		}
-		console.log('Exiting main function');
 	}
-
-	// Add a new function to log table events
-	function addTableEventListeners($table) {
-		$table
-			.on('tablesorter-initialized', function() {
-				console.log('Table initialized');
-			})
-			.on('filterEnd', function() {
-				console.log('Filtering completed');
-			})
-			.on('sortEnd', function() {
-				console.log('Sorting completed');
-			});
-	}
-
 })();
