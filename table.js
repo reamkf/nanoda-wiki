@@ -1,4 +1,4 @@
-// @ https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/table.js
+// @ https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@main/0.0.14.js
 
 (() => {
 	/**
