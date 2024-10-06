@@ -78,6 +78,193 @@
 			await loadTableSorterScripts();
 
 			// スクリプト読み込み完了後の処理をここに記述
+
+			$("table.filter").each(function(i){
+				const $table = $(this);
+
+				// External any-column search
+				const $divInputTableFilter = $("<div>", {
+					"class": "input-table-filter input-table-filter-ex",
+					style: "width: 400px"
+				});
+
+				const $inputTableFilter = $("<input>", {
+					type: "search",
+					placeholder: "キーワードで絞り込み",
+					"data-column": "all",
+					style: "width: 100%; background-color: #fff; border: 1px #ccc solid;",
+				}).appendTo($divInputTableFilter);
+
+				$table.before($divInputTableFilter);
+
+				// Drop down menu
+				const filterFunc = null;
+				// const filterFunc = {};
+				// let i = 0;
+				// $table.find("th").each(function(){
+				//     const text = $(this).text();
+				//     if(text.indexOf("属性") != -1){
+				//         filterFunc[i] = {
+				//             "ファニー" : function(e, n, f, i, $r, c, data) { return /ファニー/.test(e); },
+				//             "フレンドリー" : function(e, n, f, i, $r, c, data) { return /フレンドリー/.test(e); },
+				//             "リラックス" : function(e, n, f, i, $r, c, data) { return /リラックス/.test(e); },
+				//             "ラブリー" : function(e, n, f, i, $r, c, data) { return /ラブリー/.test(e); },
+				//             "アクティブ" : function(e, n, f, i, $r, c, data) { return /アクティブ/.test(e); },
+				//             "マイペース" : function(e, n, f, i, $r, c, data) { return /マイペース/.test(e); }
+				//         };
+				//     }
+				//     else if(text.indexOf("☆") != -1 || text.indexOf("☆") != -1){
+				//         filterFunc[i] = {
+				//             "☆4" : function(e, n, f, i, $r, c, data) { return /4/.test(e); },
+				//             "☆3" : function(e, n, f, i, $r, c, data) { return /3/.test(e); },
+				//             "☆2" : function(e, n, f, i, $r, c, data) { return /2/.test(e); },
+				//             "☆1" : function(e, n, f, i, $r, c, data) { return /1/.test(e); }
+				//         };
+				//     }
+				//     i++;
+				// });
+
+				$table.tablesorter({
+					theme: 'blue',
+
+					headers: {
+						".tablesorter-header-inner": {
+							sorter: $table.hasClass("sort")
+						}
+					},
+
+					// hidden filter input/selects will resize the columns, so try to minimize the change
+					widthFixed : false,
+
+					// initialize filter widgets
+					widgets: ["filter"],
+
+					ignoreCase: true,
+
+					sortReset: true,
+
+					widgetOptions : {
+						// filter_anyMatch options was removed in v2.15; it has been replaced by the filter_external option
+
+						// If there are child rows in the table (rows with class name from "cssChildRow" option)
+						// and this option is true and a match is found anywhere in the child row, then it will make that row
+						// visible; default is false
+						filter_childRows : false,
+
+						// if true, filter child row content by column; filter_childRows must also be true
+						filter_childByColumn : false,
+
+						// if true, include matching child row siblings
+						filter_childWithSibs : false,
+
+						// if true, a filter will be added to the top of each table column;
+						// disabled by using -> headers: { 1: { filter: false } } OR add class="filter-false"
+						// if you set this to false, make sure you perform a search using the second method below
+						filter_columnFilters : true,
+
+						// if true, allows using "#:{query}" in AnyMatch searches (column:query; added v2.20.0)
+						filter_columnAnyMatch: true,
+
+						// extra css class name (string or array) added to the filter element (input or select)
+						filter_cellFilter : '',
+
+						// extra css class name(s) applied to the table row containing the filters & the inputs within that row
+						// this option can either be a string (class applied to all filters) or an array (class applied to indexed filter)
+						filter_cssFilter : '', // or []
+
+						// add a default column filter type "~{query}" to make fuzzy searches default;
+						// "{q1} AND {q2}" to make all searches use a logical AND.
+						filter_defaultFilter : {},
+
+						// filters to exclude, per column
+						filter_excludeFilter : {},
+
+						// jQuery selector (or object) pointing to an input to be used to match the contents of any column
+						// please refer to the filter-any-match demo for limitations - new in v2.15
+						filter_external : $inputTableFilter,
+
+						// class added to filtered rows (rows that are not showing); needed by pager plugin
+						filter_filteredRow : 'filtered',
+
+						// ARIA-label added to filter input/select; {{label}} is replaced by the column header
+						// "data-label" attribute, if it exists, or it uses the column header text
+						filter_filterLabel : 'Filter "{{label}}" column by...',
+
+						// add custom filter elements to the filter row
+						// see the filter formatter demos for more specifics on how to use this option
+						filter_formatter : null,
+
+						// add custom filter functions using this option
+						// see the filter widget custom demo for more specifics on how to use this option
+						filter_functions : filterFunc,
+
+						// hide filter row when table is empty
+						filter_hideEmpty : false,
+
+						// if true, filters are collapsed initially, but can be revealed by hovering over the grey bar immediately
+						// below the header row. Additionally, tabbing through the document will open the filter row when an input gets focus
+						// in v2.26.6, this option will also accept a function
+						filter_hideFilters : false,
+
+						// Set this option to false to make the searches case sensitive
+						filter_ignoreCase : true,
+
+						// if true, search column content while the user types (with a delay).
+						// In v2.27.3, this option can contain an
+						// object with column indexes or classnames; "fallback" is used
+						// for undefined columns
+						filter_liveSearch : true,
+
+						// global query settings ('exact' or 'match'); overridden by "filter-match" or "filter-exact" class
+						filter_matchType : { 'input': 'match', 'select': 'match' },
+
+						// a header with a select dropdown & this class name will only show available (visible) options within that drop down.
+						filter_onlyAvail : 'filter-onlyAvail',
+
+						// default placeholder text (overridden by any header "data-placeholder" setting)
+						filter_placeholder : { search : '検索', select : '選択' },
+
+						// jQuery selector string of an element used to reset the filters
+						filter_reset : 'button.reset',
+
+						// Reset filter input when the user presses escape - normalized across browsers
+						filter_resetOnEsc : true,
+
+						// Use the $.tablesorter.storage utility to save the most recent filters (default setting is false)
+						filter_saveFilters : false,
+
+						// Delay in milliseconds before the filter widget starts searching; This option prevents searching for
+						// every character while typing and should make searching large tables faster.
+						filter_searchDelay : 300,
+
+						// allow searching through already filtered rows in special circumstances; will speed up searching in large tables if true
+						filter_searchFiltered: true,
+
+						// include a function to return an array of values to be added to the column filter select
+						filter_selectSource  : null,
+
+						// if true, server-side filtering should be performed because client-side filtering will be disabled, but
+						// the ui and events will still be used.
+						filter_serversideFiltering : false,
+
+						// Set this option to true to use the filter to find text from the start of the column
+						// So typing in "a" will find "albert" but not "frank", both have a's; default is false
+						filter_startsWith : false,
+
+						// Filter using parsed content for ALL columns
+						// be careful on using this on date columns as the date is parsed and stored as time in seconds
+						filter_useParsedData : false,
+
+						// data attribute in the header cell that contains the default filter value
+						filter_defaultAttrib : 'data-value',
+
+						// filter_selectSource array text left of the separator is added to the option value, right into the option text
+						filter_selectSourceSeparator : '|'
+					}
+				});
+			});
+
+
 			addCSS(`
 				/*************
 				Blue Theme
@@ -314,190 +501,6 @@
 				}
 			`);
 
-			$("table.filter").each(function(i){
-				const $table = $(this);
-
-				// External any-column search
-				const $divInputTableFilter = $("<div>", {
-					"class": "input-table-filter input-table-filter-ex",
-					style: "width: 400px"
-				});
-
-				const $inputTableFilter = $("<input>", {
-					type: "search",
-					placeholder: "キーワードで絞り込み",
-					"data-column": "all",
-					style: "width: 100%; background-color: #fff; border: 1px #ccc solid;",
-				}).appendTo($divInputTableFilter);
-
-				$table.before($divInputTableFilter);
-
-				// Drop down menu
-				const filterFunc = null;
-				// const filterFunc = {};
-				// let i = 0;
-				// $table.find("th").each(function(){
-				//     const text = $(this).text();
-				//     if(text.indexOf("属性") != -1){
-				//         filterFunc[i] = {
-				//             "ファニー" : function(e, n, f, i, $r, c, data) { return /ファニー/.test(e); },
-				//             "フレンドリー" : function(e, n, f, i, $r, c, data) { return /フレンドリー/.test(e); },
-				//             "リラックス" : function(e, n, f, i, $r, c, data) { return /リラックス/.test(e); },
-				//             "ラブリー" : function(e, n, f, i, $r, c, data) { return /ラブリー/.test(e); },
-				//             "アクティブ" : function(e, n, f, i, $r, c, data) { return /アクティブ/.test(e); },
-				//             "マイペース" : function(e, n, f, i, $r, c, data) { return /マイペース/.test(e); }
-				//         };
-				//     }
-				//     else if(text.indexOf("☆") != -1 || text.indexOf("☆") != -1){
-				//         filterFunc[i] = {
-				//             "☆4" : function(e, n, f, i, $r, c, data) { return /4/.test(e); },
-				//             "☆3" : function(e, n, f, i, $r, c, data) { return /3/.test(e); },
-				//             "☆2" : function(e, n, f, i, $r, c, data) { return /2/.test(e); },
-				//             "☆1" : function(e, n, f, i, $r, c, data) { return /1/.test(e); }
-				//         };
-				//     }
-				//     i++;
-				// });
-
-				$table.tablesorter({
-					theme: 'blue',
-
-					headers: {
-						".tablesorter-header-inner": {
-							sorter: $table.hasClass("sort")
-						}
-					},
-
-					// hidden filter input/selects will resize the columns, so try to minimize the change
-					widthFixed : false,
-
-					// initialize filter widgets
-					widgets: ["filter"],
-
-					ignoreCase: true,
-
-					sortReset: true,
-
-					widgetOptions : {
-						// filter_anyMatch options was removed in v2.15; it has been replaced by the filter_external option
-
-						// If there are child rows in the table (rows with class name from "cssChildRow" option)
-						// and this option is true and a match is found anywhere in the child row, then it will make that row
-						// visible; default is false
-						filter_childRows : false,
-
-						// if true, filter child row content by column; filter_childRows must also be true
-						filter_childByColumn : false,
-
-						// if true, include matching child row siblings
-						filter_childWithSibs : false,
-
-						// if true, a filter will be added to the top of each table column;
-						// disabled by using -> headers: { 1: { filter: false } } OR add class="filter-false"
-						// if you set this to false, make sure you perform a search using the second method below
-						filter_columnFilters : true,
-
-						// if true, allows using "#:{query}" in AnyMatch searches (column:query; added v2.20.0)
-						filter_columnAnyMatch: true,
-
-						// extra css class name (string or array) added to the filter element (input or select)
-						filter_cellFilter : '',
-
-						// extra css class name(s) applied to the table row containing the filters & the inputs within that row
-						// this option can either be a string (class applied to all filters) or an array (class applied to indexed filter)
-						filter_cssFilter : '', // or []
-
-						// add a default column filter type "~{query}" to make fuzzy searches default;
-						// "{q1} AND {q2}" to make all searches use a logical AND.
-						filter_defaultFilter : {},
-
-						// filters to exclude, per column
-						filter_excludeFilter : {},
-
-						// jQuery selector (or object) pointing to an input to be used to match the contents of any column
-						// please refer to the filter-any-match demo for limitations - new in v2.15
-						filter_external : $inputTableFilter,
-
-						// class added to filtered rows (rows that are not showing); needed by pager plugin
-						filter_filteredRow : 'filtered',
-
-						// ARIA-label added to filter input/select; {{label}} is replaced by the column header
-						// "data-label" attribute, if it exists, or it uses the column header text
-						filter_filterLabel : 'Filter "{{label}}" column by...',
-
-						// add custom filter elements to the filter row
-						// see the filter formatter demos for more specifics on how to use this option
-						filter_formatter : null,
-
-						// add custom filter functions using this option
-						// see the filter widget custom demo for more specifics on how to use this option
-						filter_functions : filterFunc,
-
-						// hide filter row when table is empty
-						filter_hideEmpty : false,
-
-						// if true, filters are collapsed initially, but can be revealed by hovering over the grey bar immediately
-						// below the header row. Additionally, tabbing through the document will open the filter row when an input gets focus
-						// in v2.26.6, this option will also accept a function
-						filter_hideFilters : false,
-
-						// Set this option to false to make the searches case sensitive
-						filter_ignoreCase : true,
-
-						// if true, search column content while the user types (with a delay).
-						// In v2.27.3, this option can contain an
-						// object with column indexes or classnames; "fallback" is used
-						// for undefined columns
-						filter_liveSearch : true,
-
-						// global query settings ('exact' or 'match'); overridden by "filter-match" or "filter-exact" class
-						filter_matchType : { 'input': 'match', 'select': 'match' },
-
-						// a header with a select dropdown & this class name will only show available (visible) options within that drop down.
-						filter_onlyAvail : 'filter-onlyAvail',
-
-						// default placeholder text (overridden by any header "data-placeholder" setting)
-						filter_placeholder : { search : '検索', select : '選択' },
-
-						// jQuery selector string of an element used to reset the filters
-						filter_reset : 'button.reset',
-
-						// Reset filter input when the user presses escape - normalized across browsers
-						filter_resetOnEsc : true,
-
-						// Use the $.tablesorter.storage utility to save the most recent filters (default setting is false)
-						filter_saveFilters : false,
-
-						// Delay in milliseconds before the filter widget starts searching; This option prevents searching for
-						// every character while typing and should make searching large tables faster.
-						filter_searchDelay : 300,
-
-						// allow searching through already filtered rows in special circumstances; will speed up searching in large tables if true
-						filter_searchFiltered: true,
-
-						// include a function to return an array of values to be added to the column filter select
-						filter_selectSource  : null,
-
-						// if true, server-side filtering should be performed because client-side filtering will be disabled, but
-						// the ui and events will still be used.
-						filter_serversideFiltering : false,
-
-						// Set this option to true to use the filter to find text from the start of the column
-						// So typing in "a" will find "albert" but not "frank", both have a's; default is false
-						filter_startsWith : false,
-
-						// Filter using parsed content for ALL columns
-						// be careful on using this on date columns as the date is parsed and stored as time in seconds
-						filter_useParsedData : false,
-
-						// data attribute in the header cell that contains the default filter value
-						filter_defaultAttrib : 'data-value',
-
-						// filter_selectSource array text left of the separator is added to the option value, right into the option text
-						filter_selectSourceSeparator : '|'
-					}
-				});
-			});
 
 		} catch (error) {
 			console.error("Error in main function:", error);
