@@ -92,7 +92,7 @@
 					type: "search",
 					placeholder: "キーワードで絞り込み",
 					"data-column": "all",
-					style: "width: 100%; background-color: #fff; border: 1px #ccc solid;",
+					style: "width: 100%; background-color: white;",
 				}).appendTo($divInputTableFilter);
 
 				$table.before($divInputTableFilter);
