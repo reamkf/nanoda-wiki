@@ -1,0 +1,1031 @@
+@charset "EUC-JP";
+/* ----------------------------------------------------------------------------------------------------------------
+　テンプレート名：濃いオリーブ
+---------------------------------------------------------------------------------------------------------------- */
+/* ！ カスタマイズ部分は一番下に付け加えてください。下の方にあるルールが優先されます。 */
+
+body {
+	font-size:82%;
+	line-height: 1.35;
+	font-family: Verdana, sans-serif;
+	color:#333;
+	margin:0;
+	padding:0;
+	background:#fff;
+}
+
+a:link { color:#215dc6;text-decoration:none;}
+a:visited { color:#609;text-decoration:none;}
+a:hover { text-decoration:underline;}
+a:active { text-decoration:underline;}
+
+
+/* layout -- レイアウト
+	 各カラムの幅を変更したい場合は、ここで指定して下さい。
+	 何も指定しない場合は「#sub = 250px」「#extra = 200px」となります。
+---------------------------------------------------------------------------------------------------------------- */
+div#wiki-content div#main {
+	margin:0 0 0 -200px;
+}
+div#wiki-content div#main div.column-inner {
+	margin:0 0 0 210px;
+}
+div#wiki-content div#sub {
+	width:200px;
+}
+div#wiki-content div#extra {
+	width:200px;
+}
+
+/* #container -- body直下の指定
+	 共通ヘッダを含む幅を指定したい場合はここで幅を指定して下さい。
+	 ただし775px以下の大きさには指定しないで下さい
+---------------------------------------------------------------------------------------------------------------- */
+div#container {}
+
+/* #common-footer -- 共通フッタ
+---------------------------------------------------------------------------------------------------------------- */
+div#common-footer {
+	padding:10px 0 20px;
+}
+div#common-footer a {}
+div#common-footer a:hover {
+	text-decoration:none;
+}
+div#common-footer div.column-inner {}
+div#common-footer p.partner {
+	margin-bottom:5px;
+}
+
+/* #wiki-container -- 個別ウィキ用のエリア
+	 固定の共通ヘッダを除くの幅を指定したい場合はここで幅を指定して下さい。
+---------------------------------------------------------------------------------------------------------------- */
+div#wiki-container {}
+
+/* #wiki-header
+	 タイトルの背景に画像を指定したい場合はここで指定して下さい。
+---------------------------------------------------------------------------------------------------------------- */
+div#wiki-header {}
+div#wiki-header div.column-inner {}
+div#wiki-header div.column-inner-2 {
+	background:url(//static.seesaawiki.jp/img/usr_second/grade_olive/header_bg.gif) repeat-x 0 0;
+}
+div#wiki-header div.column-inner-3 {
+	position:relative;
+	height:63px;
+	background:url(//static.seesaawiki.jp/img/usr_second/grade_olive/header.gif) no-repeat 0 0;
+}
+div#wiki-header div#wiki-title {
+	position:absolute;
+	top:17px;
+	left:65px;
+}
+div#wiki-header div#wiki-title h1 {
+	color:#fff;
+	font-weight:bold;
+	font-size:22px;
+	line-height:1;
+}
+div#wiki-title a {
+	text-decoration:none;
+}
+div#wiki-title a:link {color:#fff;}
+div#wiki-title a:visited {color:#fff;}
+div#wiki-title a:hover {}
+div#wiki-title a:active {}
+
+div#wiki-header div#wiki-description {
+	position:absolute;
+	top:42px;
+	left:65px;
+}
+div#wiki-header div#wiki-description p {
+	color:#fff;
+	font-size:10px;
+}
+
+/* #wiki-menu
+---------------------------------------------------------------------------------------------------------------- */
+div#wiki-menu {
+	background:#fff url(//static.seesaawiki.jp/img/usr_second/grade_olive/bg_menubar.gif) repeat-x 0 0;
+	border-bottom:#dcdcdc solid 1px;
+	height:33px;
+}
+ul#navigation-m {
+	top:0;
+	bottom:0;
+	left:10px;
+}
+ul#navigation-m li {
+	display:block;
+	float:left;
+}
+ul#navigation-m li a {
+	display:block;
+	padding:0 10px;
+	line-height:33px;
+	text-decoration:none;
+	background:none;
+}
+ul#navigation-m li a:visited {
+	color:#215dc6;
+}
+
+ul#navigation-m li a:hover {
+	background:#ededed url(//static.seesaawiki.jp/img/usr_second/grade_olive/bg_menubar_on.gif) repeat-x 0 0;
+}
+ul#navigation-m li.top {
+	background:transparent;
+	margin-left:0;
+	padding-left:0;
+}
+ul#navigation-m li.list {}
+ul#navigation-m li.tags {}
+ul#navigation-m li.logout {}
+
+div#wiki-menu div.search-box {
+	padding-top:6px;
+}
+div#wiki-menu div.search-box form {}
+div#wiki-menu div.search-box ul {}
+div#wiki-menu div.search-box ul li {}
+div#wiki-menu div.search-box ul li input.form-text {}
+div#wiki-menu div.search-box ul li input.form-button {}
+
+div#wiki-menu ul.tool-list {
+	margin-top:8px;
+	margin-right:20px;
+}
+div#wiki-menu ul.tool-list li {}
+
+
+/* #wiki-content
+---------------------------------------------------------------------------------------------------------------- */
+div#wiki-content {
+	margin:10px 20px 0;
+}
+
+div#wiki-content div#main {}
+div#wiki-content div#main div.column-inner {}
+
+div#wiki-content div.sidecolumn {}
+div#wiki-content div.sidecolumn div.column-inner {}
+
+div#wiki-content div#sub {}
+div#wiki-content div#sub div.column-inner {}
+
+div#wiki-content div#extra {}
+div#wiki-content div#extra div.column-inner {}
+
+
+/* #main
+---------------------------------------------------------------------------------------------------------------- */
+div#main {}
+div#main div.column-inner {}
+
+/* #main - page-container
+-------------------------------------------------------- */
+div#page-container {}
+div#page-container div.box-inner {}
+
+div#page-header {}
+div#page-header div.box-inner {}
+
+div#page-header div.title {
+	border-bottom:#82ac3f solid 1px;
+	margin-bottom:5px;
+}
+div#page-header div.title div.inner {}
+
+div#page-header div.title h2 {
+	font-size:160%;
+	color:#333;
+}
+div#page-header div.title h2 a {
+	color:#333;
+	text-decoration:none;
+}
+div#page-header div.title h2 a:hover {
+	color:#215dc6;
+}
+div#page-header div.title p.history {
+	top:5px;
+}
+div#page-header div.title p.history a {
+	color:#333;
+	text-decoration:none;
+}
+div#page-header div.title p.history a:hover {
+	color:#215dc6;
+	text-decoration:underline;
+}
+
+div#page-header p.update {
+	font-size:90%;
+}
+div#page-header p.update a {}
+
+/* #main - page-body
+-------------------------------------------------------- */
+div#page-body {
+	margin:10px auto;
+}
+div#page-body div.box-inner {}
+
+/* #main - page-footer
+-------------------------------------------------------- */
+div#page-footer {}
+div#page-footer div.box-inner {}
+
+div#information-box {
+	padding:5px 10px;
+	background:#f3f3f3;
+	border:#ddd solid 1px;
+}
+ul#page-posted {}
+ul#page-posted li {}
+ul#page-posted li.comment {}
+ul#page-posted li.trackback {}
+
+ul#page-category {}
+ul#page-category li {}
+ul#page-category li.title {}
+ul#page-category li.parent {}
+ul#page-category li.child {}
+
+ul#page-tags {}
+ul#page-tags li {}
+ul#page-tags li.title {}
+ul#page-tags li.tags {}
+
+ul#page-attachedfile {}
+ul#page-attachedfile li {}
+ul#page-attachedfile li.title {}
+
+div#page-footer ul.tool-list {}
+div#page-footer ul.tool-list li {}
+div#page-footer ul.tool-list li img {}
+
+
+/* #main tag
+	 ユーザーが書き込むウィキタグ→htmlタグのスタイルを指定
+	 プレビューの場合に必要になるので「div.user-area」に背景色を指定してください。
+	 サイドカラムの色とメインカラムの色が別になる場合は、「div.sidecolumn div.user-area」で
+	 サイドカラムの色も指定してください。
+---------------------------------------------------------------------------------------------------------------- */
+div.user-area {
+	background:#fff;
+}
+div.sidecolumn div.user-area {
+	background:transparent;
+}
+div.user-area hr {
+	background:#9a9a9a;
+	color:#9a9a9a;
+}
+div.user-area table th,
+div.user-area table td {
+	padding:5px;
+	border:#ddd solid 1px;
+}
+div.user-area table th {
+	background:#999;
+}
+div.user-area table td {}
+div.user-area div.title-1 h3,
+div.user-area div.title-2 h4,
+div.user-area div.title-3 h5 {
+	font-size:120%;
+}
+div.user-area div.title-1 {
+	padding:5px;
+	background:#ddd;
+}
+div.user-area div.title-1 h3 {}
+div.user-area div.title-1 h3 a {
+	color:#333;
+}
+div.user-area div.title-1 h3 a:hover {
+	text-decoration:underline;
+}
+div.user-area div.title-2 {
+	padding:3px;
+	border-left:#82ac3f solid 2px;
+	border-bottom:#ddd solid 1px;
+}
+div.user-area div.title-2 h4 {}
+div.user-area div.title-2 h4 a {
+	color:#333;
+}
+div.user-area div.title-2 h4 a:hover {
+	text-decoration:underline;
+}
+div.user-area div.title-3 {}
+div.user-area div.title-3 h5 {}
+div.user-area div.title-3 h5 a {
+	color:#333;
+}
+div.user-area div.title-3 h5 a:hover {
+	text-decoration:underline;
+}
+div.user-area blockquote {
+	border:#ddd dashed 1px;
+	padding:10px;
+}
+div#main div.user-area pre.prettyprint {
+	color:#000;
+	background-color:#f3f3f3;
+	padding:10px;
+	border:#ccc solid 1px;
+}
+div.sidecolumn div.user-area pre.prettyprint {
+	padding:5px;
+}
+
+/* コメント一覧・トラックバック一覧
+	 コメントは個別ページ（個数制限あり、「#page-footer」内に配置）、コメントページ（全件表示「#page-body」内に配置）
+--------------------------------------------------------------------------------------------------------------- */
+div#comment-box,
+div#trackback-box {}
+div#comment-box div.title,
+div#trackback-box div.title {}
+div#comment-box div.title h3,
+div#trackback-box div.title h3 {}
+div#comment-box div.body,
+div#trackback-box div.body {}
+div#comment-box div.body div.text,
+div#trackback-box div.body div.text {
+	font-size:90%;
+	line-height:1.3;
+	padding-bottom:10px;
+	border-bottom:#999 dashed 1px;
+	margin-bottom:20px;
+}
+div#comment-box div.body div.text p,
+div#trackback-box div.body div.text p {}
+div#comment-box div.body div.text span.posted,
+div#trackback-box div.body div.text span.posted {}
+
+/* 個別ページ内での設定 */
+div.page-index div#comment-box {
+	margin-top:40px;
+	padding-top:10px;
+	border-top:#999 solid 1px;
+}
+div.page-index div#comment-box div.title {
+	font-size:80%;
+	padding:0 0 0 20px;
+	background:transparent url(//static.seesaawiki.jp/img/usr_second/common/icon_comment.gif) no-repeat 0 0;
+	margin:0 0 10px 0;
+}
+div.page-index div#comment-box div.title h3 {}
+div.page-index div#comment-box div.body {}
+div.page-index div#comment-box div.body div.text {}
+div.page-index div#comment-box div.body div.text p {}
+div.page-index div#comment-box div.body div.text span.posted {}
+
+/* コメントページ内での設定 */
+div.page-comment div#trackback-box,
+div.page-comment div#comment-box {}
+
+div.page-comment div#trackback-box div.title,
+div.page-comment div#comment-box div.title {
+	padding:5px;
+	background:#ddd;
+}
+div.page-comment div#trackback-box div.title h3,
+div.page-comment div#comment-box div.title h3 {
+
+}
+div.page-comment div#trackback-box div.body,
+div.page-comment div#comment-box div.body,
+div.page-comment div.form-box {
+	padding:0 10px;
+}
+div.page-comment div#trackback-box div.body div.text,
+div.page-comment div#comment-box div.body div.text {}
+div.page-comment div#comment-box div.body div.text p {}
+div.page-comment div#comment-box div.body div.text span.posted {}
+
+/* トラックバックフォーム */
+div#trackback-box div.entry {}
+div#trackback-box div.entry label {
+	padding:0 0 0 20px;
+	background:transparent url(//static.seesaawiki.jp/img/usr_second/common/icon_comment.gif) no-repeat 0 0;
+	margin:0 0 10px 0;
+}
+div#trackback-box div.entry input {}
+
+/* 投稿フォーム */
+div.page-comment div#page-body div.form-box {}
+div.page-comment div#page-body div.form-box div.title {
+	padding:0 0 0 20px;
+	background:transparent url(//static.seesaawiki.jp/img/usr_second/common/icon_comment.gif) no-repeat 0 0;
+	margin:0 0 10px 0;
+}
+div.page-comment div#page-body div.form-box div.title h3 {}
+div.page-comment div#page-body div.form-box table {}
+div.page-comment div#page-body div.form-box table tr {}
+div.page-comment div#page-body div.form-box table th {}
+div.page-comment div#page-body div.form-box table td {}
+div.page-comment div#page-body div.form-box table td p {}
+div.page-comment div#page-body div.form-box table td input#author {}
+div.page-comment div#page-body div.form-box table td input#email {}
+div.page-comment div#page-body div.form-box table td input#url {}
+div.page-comment div#page-body div.form-box table td input#captcha {}
+div.page-comment div#page-body div.form-box table td textarea {}
+div.page-comment div#page-body div.form-box table td.button {}
+div.page-comment div#page-body div.form-box table td.button input {}
+
+/* ページ一覧
+---------------------------------------------------------------------------------------------------------------- */
+div.page-pagelist {}
+div.page-pagelist div#page-header div.box-inner {}
+
+div#main div.form-box {}
+div#main div.form-box select {}
+div#main div.form-box input {}
+
+div.paging-top {}
+div.paging-bottom {}
+div.paging-top p {}
+div.paging-bottom p {}
+
+ul.paging-list {}
+ul.paging-list li {}
+ul.paging-list li.prev {}
+
+ul.page-list {}
+ul.page-list li {}
+ul.page-list li.last {}
+ul.page-list li span {}
+ul.page-list li span img {}
+
+/* 検索一覧・タグ一覧
+---------------------------------------------------------------------------------------------------------------- */
+div.result-box {}
+
+/* 検索フォーム */
+div.search-box-main {}
+div.search-box-main div.box-inner {}
+div.search-box-main div.box-inner form {}
+div.search-box-main input {}
+div.search-box-main label {}
+div.search-box-main ul {}
+div.search-box-main ul li.title {}
+
+div.result-box p.title {}
+div.result-box p.title strong {
+	color:#d00;
+}
+div.result-box div.paging-top {}
+div.result-box div.paging-bottom {}
+
+div.result-box div.body {
+	padding:0 10px 30px;
+}
+div.result-box div.body h3.keyword {}
+div.result-box div.body p.text {
+	font-size:90%;
+	line-height:1.5;
+}
+div.result-box div.body p.url {
+	text-align:right;
+}
+
+/* 履歴
+	 小見出し、リストはデフォルトではwikipageのカキコミエリアと同じものがでる。
+	 ページ独自の指定がしたい場合はここで設定
+---------------------------------------------------------------------------------------------------------------- */
+div.page-history p {}
+div.page-history p.update {}
+div.page-history p.update img {}
+
+/* 復元ポイントリスト */
+div.page-history div.user-area ul.point-list {}
+
+/* 履歴リスト */
+div.page-history div.user-area ul.history-list {}
+
+div.page-history div.user-area div.title-1 {}
+div.page-history div.user-area div.title-1 h3 {}
+div.page-history div.user-area ul.list-1 {}
+div.page-history div.user-area ul.list-1 li {}
+
+/* 差分
+---------------------------------------------------------------------------------------------------------------- */
+div.page-diff {}
+div.page-diff div.information-box {
+	background:#f3f3f3;
+	border:#ddd solid 1px;
+	padding:5px;
+}
+div.page-diff div.information-box p {
+	margin-bottom:0;
+	line-height:1.5;
+}
+div.page-diff div.information-box p.category {}
+div.page-diff div.diff-box {
+	padding:10px;
+	border:none;
+	background:transparent;
+}
+
+/* 差分表示・追加 */
+div.page-diff .line-add {}
+/* 差分表示・削除 */
+div.page-diff .line-delete {}
+/* 差分表示・囲み */
+div.page-diff div.diff-box {}
+
+/* 読者表示
+	 小見出し、リストはデフォルトではwikipageのカキコミエリアと同じものがでる。
+	 ページ独自の指定がしたい場合はここで設定
+---------------------------------------------------------------------------------------------------------------- */
+div.page-readmember {}
+div.page-readmember div.user-area {}
+div.page-readmember div.user-area div.title-1 {}
+div.page-readmember div.user-area div.title-1 h3 {}
+div.page-readmember div.user-area ul.list-1 {}
+div.page-readmember div.user-area ul.list-1 li {}
+
+/* 添付一覧
+---------------------------------------------------------------------------------------------------------------- */
+div.page-attachment {}
+div.page-attachment div.paging-top {
+	padding:10px 0 0;
+}
+
+div.page-attachment ul.page-list li.even {
+	background:transparent;
+}
+div.page-attachment ul.page-list li.odd {
+	background:#ddd;
+}
+
+/* .sidecolumn
+---------------------------------------------------------------------------------------------------------------- */
+/* #sub
+-------------------------------------------------------- */
+div#wiki-content div#sub {
+	padding-top:5px;
+	background:url(//static.seesaawiki.jp/img/usr_second/grade_olive/bg_side.gif) repeat-x 0 0;
+}
+div#wiki-content div#sub div.column-inner {}
+
+/* #extra
+-------------------------------------------------------- */
+div#wiki-content div#extra {}
+div#wiki-content div#extra div.column-inner {}
+
+/* .sidecolumn
+	  「extra」「sub」どちらのカラムにも共通するものはここで指定して下さい。
+-------------------------------------------------------- */
+div.sidecolumn {}
+div.sidecolumn div.column-inner {}
+
+div.side-box,div.free-box,div.sidecolumn div.form-box {}
+div.side-box div.box-inner,div.free-box div.box-inner,div.sidecolumn div.form-box div.box-inner {}
+div.side-box div.title,div.free-box div.title,div.sidecolumn div.form-box div.title {
+	color:#82ac3f;
+	padding-bottom:2px;
+	border-bottom:#82ac3f solid 1px;
+	margin-bottom:10px;
+}
+div.side-box div.title h2,div.free-box div.title h2,div.sidecolumn div.form-box div.title h2 {}
+
+div.side-box div.body,div.free-box div.body,div.sidecolumn div.form-box div.body {
+	margin-bottom:20px;
+}
+div.side-box div.body div.inner,div.free-box div.body div.inner,div.sidecolumn div.form-box div.body div.inner {}
+
+div.sidecolumn div.ld-plugin div.inner {}
+div.sidecolumn div.ld-plugin div.inner p.count {}
+div.sidecolumn div.ld-plugin div.inner p.count a { }
+div.sidecolumn div.ld-plugin div.inner p.button {}
+
+div.side-box {}
+div.side-box div.box-inner {}
+div.side-box div.title {}
+div.side-box div.title h2 {}
+div.side-box div.body {}
+div.side-box div.body div.inner {}
+div.side-box ul {}
+div.side-box ul li {}
+div.side-box ul li span {}
+div.side-box ul.parent-list {}
+div.side-box ul.parent-list li {}
+div.side-box ul.parent-list li h3 {
+	font-weight:bold;
+	font-size:120%;
+}
+div.side-box ul.parent-list li h3 a {
+	color:#333;
+	text-decoration:none;
+}
+div.side-box ul.parent-list li h3 a:hover {
+	text-decoration:underline;
+}
+div.side-box ul.child-list {
+	margin:0;
+}
+div.side-box ul.child-list li {
+	padding-left:10px;
+	background:url(//static.seesaawiki.jp/img/usr_second/grade_olive/dot.gif) no-repeat 0 7px;
+	margin-bottom:5px;
+}
+div.side-box ul.child-list li a {}
+div.side-box ul.child-list li a:hover {}
+div.side-box div.tagcloud {
+	padding:5px;
+	background:#f3f3f3;
+}
+div.ld-plugin p.button {
+	padding:10px 0 0;
+}
+
+div.free-box {}
+div.free-box div.box-inner {}
+div.free-box div.title {}
+div.free-box div.title h2 {}
+div.free-box div.body {}
+div.free-box div.body div.inner {}
+
+div.sidecolumn div.form-box form {}
+div.sidecolumn div.form-box form input.form-text {
+	width:140px;
+}
+div.sidecolumn div.form-box form input.form-button {}
+div.sidecolumn div.form-box {}
+div.sidecolumn div.form-box div.box-inner {}
+div.sidecolumn div.form-box div.title {}
+div.sidecolumn div.form-box div.title h2 {}
+div.sidecolumn div.form-box div.body {}
+div.sidecolumn div.form-box div.body div.inner {}
+
+/* 「div.side-box」と並列なもの
+	  「recent」更新情報「category」カテゴリ「comment」 -- リストを使用
+-------------------------------------------------------- */
+div.sidecolumn div.recent {}
+div.sidecolumn div.recent div.box-inner {}
+div.sidecolumn div.recent div.title {}
+div.sidecolumn div.recent div.title h2 {}
+div.sidecolumn div.recent div.body {}
+div.sidecolumn div.recent div.body div.inner {}
+div.sidecolumn div.recent ul {}
+div.sidecolumn div.recent ul li {}
+div.sidecolumn div.recent ul.parent-list {}
+div.sidecolumn div.recent ul.parent-list li {}
+div.sidecolumn div.recent ul.parent-list li h3 {}
+div.sidecolumn div.recent ul.parent-list li h3 a {}
+div.sidecolumn div.recent ul.child-list {}
+div.sidecolumn div.recent ul.child-list li {}
+div.sidecolumn div.recent ul.child-list li a {}
+
+div.sidecolumn div.category {}
+div.sidecolumn div.category div.box-inner {}
+div.sidecolumn div.category div.title {}
+div.sidecolumn div.category div.title h2 {}
+div.sidecolumn div.category div.body {}
+div.sidecolumn div.category div.body div.inner {}
+div.sidecolumn div.category ul {}
+div.sidecolumn div.category ul li {}
+div.sidecolumn div.category ul.parent-list {}
+div.sidecolumn div.category ul.parent-list li {}
+div.sidecolumn div.category ul.parent-list li h3 {
+	font-weight:bold;
+	font-size:120%;
+}
+div.sidecolumn div.category ul.parent-list li h3 a {}
+div.sidecolumn div.category ul.parent-list li h3 a:hover {}
+div.sidecolumn div.category ul.child-list {}
+div.sidecolumn div.category ul.child-list li {}
+div.sidecolumn div.category ul.child-list li a {}
+
+div.sidecolumn div.comment {}
+div.sidecolumn div.comment div.box-inner {}
+div.sidecolumn div.comment div.title {}
+div.sidecolumn div.comment div.title h2 {}
+div.sidecolumn div.comment div.body {}
+div.sidecolumn div.comment div.body div.inner {}
+div.sidecolumn div.comment ul {}
+div.sidecolumn div.comment ul li {
+	padding-left:10px;
+	background:url(//static.seesaawiki.jp/img/usr_second/grade_olive/dot.gif) no-repeat 0 7px;
+	margin-bottom:5px;
+}
+div.sidecolumn div.comment ul li span {}
+
+div.sidecolumn div.banner {}
+div.sidecolumn div.banner div.body {
+	padding:0 5px;
+	text-align:center;
+}
+
+div.sidecolumn ul.editorList {}
+div.sidecolumn ul.editorList li {
+	display:block;
+	float:left;
+	margin:0 3px 3px 0;
+}
+div.sidecolumn ul.editorList li img {
+	width:32px;
+	height:32px;
+}
+
+/* google adsense
+---------------------------------------------------------------------------------------------------------------- */
+div#main div.adsense-box {
+	padding:5px 0 0;
+	margin:10px auto;
+	background:#f3f3f3;
+	display:block!important;
+}
+div.sidecolumn div.adsense-box {
+	padding:5px;
+	margin:0 auto;
+	display:block!important;
+	background:#f3f3f3;
+}
+div#main div.adsense-main-inner {
+	border:none;
+	margin:0 auto 10px;
+}
+
+div.adsense-box {}
+div.adsense-box p {
+	color:#333;
+	text-align:right;
+	font-size:90%;
+	font-weight:bold;
+	line-height:100%;
+	padding:0 5px 5px 0;
+}
+div.adsense-box ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+div.adsense-box ul li {}
+div.adsense-box ul li a {
+	padding:5px;
+}
+div.adsense-box ul li a:hover {
+	background:#fffadd;
+}
+div#main div.adsense-box ul li a {
+	line-height:1;
+	background:url(//static.seesaawiki.jp/img/usr_second/common/icon_pr.gif) no-repeat 5px 5px;
+	padding-left:30px;
+}
+div#main div.adsense-box ul li a:hover {
+	background:#fffadd url(//static.seesaawiki.jp/img/usr_second/common/icon_pr.gif) no-repeat 5px 5px;
+	padding-left:30px;
+}
+div.adsense-box ul li span.ads-title {
+	color:#215dc6;
+	font-weight:bold;
+	text-decoration:none!important;
+}
+div.adsense-box ul li span.ads-url {
+	color:#215dc6;
+	font-size:80%;
+}
+div.adsense-box ul li span.ads-text {
+	font-size:80%;
+}
+div.sidecolumn div.adsense-box ul li span.ads-url {
+	display:block;
+	margin:5px 0;
+}
+div.sidecolumn div.adsense-box ul li span.ads-text {
+	line-height:1.3;
+}
+
+/* tagcloud
+---------------------------------------------------------------------------------------------------------------- */
+div.tagcloud {}
+div.tagcloud span {}
+
+.tagcloud_base a:link {}
+.tagcloud_base a:visited {}
+.tagcloud_base a:active {}
+.tagcloud_base a:hover {}
+
+.tagcloud_used a:link {}
+.tagcloud_used a:visited {}
+.tagcloud_used a:active {}
+.tagcloud_used a:hover {}
+
+.tagcloud_t0 a:link {}
+.tagcloud_t0 a:visited {}
+.tagcloud_t0 a:active {}
+.tagcloud_t0 a:hover {}
+
+.tagcloud_t1 a:link {}
+.tagcloud_t1 a:visited {}
+.tagcloud_t1 a:active {}
+.tagcloud_t1 a:hover {}
+
+.tagcloud_t2 a:link {}
+.tagcloud_t2 a:visited {}
+.tagcloud_t2 a:active {}
+.tagcloud_t2 a:hover {}
+
+.tagcloud_t3 a:link {}
+.tagcloud_t3 a:visited {}
+.tagcloud_t3 a:active {}
+.tagcloud_t3 a:hover {}
+
+.tagcloud_t4 a:link {}
+.tagcloud_t4 a:visited {}
+.tagcloud_t4 a:active {}
+.tagcloud_t4 a:hover {}
+
+
+/* ----------------------------------------------------------------------------------------------------------------
+　制作日：2008/12/29
+　最終更新日：
+　リリース日：
+　レイアウト：2カラム
+　共通ヘッダの高さ：30px;
+#container		大枠
+	|-- #common-header … 共通ヘッダ（固定）
+		|-- #logo … ロゴ
+		|-- #navigation-h … 編集・管理用ツール・ナビゲーション
+	|-- #wiki-container … 共通ヘッダ以降を囲む枠
+		|-- #wiki-header … ウィキのヘッダ
+			|-- #wiki-title … ウィキのタイトル表示（h1）
+			|-- #wiki-description … ウィキの説明文表示（p）
+		|-- #wiki-menu … 閲覧用ツール・ナビゲーション
+			|-- .search-box … ウィキ内検索
+		|-- #wiki-content … 3カラム（2カラム）をつつむ枠
+			|-- #main … 中央カラム
+				|-- #page-header … ページタイトル表示（h2）
+				|-- #page-body … 本文表示（ページの編集はここの中で完結する）
+				|-- #page-footer … ページにまつわる各種リンク
+					|-- #pege-posted … コメント、トラックバック、クリップ
+					|-- #pege-category … ページが属するカテゴリとサブカテゴリ
+					|-- #pege-tags … ページにつけるタグ（複数表示）
+				|-- #page-attachedfile … ページに追加されたファイルを表示
+			|-- #sub … サイドカラム（優先）
+			|-- #extra … サイドカラム
+	|-- #common-footer … 共通フッタ
+
+　各ページで使い回す部分：
+		* google adsense
+		* tagcloud
+
+　個別ページ：
+		* コメント一覧・トラックバック一覧（サイドカラムなし）
+		* ページ一覧（サイドカラムなし）
+		* 検索一覧・タグ一覧（サイドカラムなし）
+		* 履歴（サイドカラムなし）
+		* 差分（サイドカラムなし）
+		* 添付（サイドカラムあり）
+		* 読者表示（サイドカラムあり）
+---------------------------------------------------------------------------------------------------------------- */
+
+/*	------------------------------------------------------------------
+		ヘッダロゴに[バル]を重ねる
+	------------------------------------------------------------------ */
+div#common-header .header-logo:after {
+	content: "";
+	background-image: url(https://image02.seesaawiki.jp/k/h/kemono_friends3_5ch/LS9X7_9tnh.png);
+	background-repeat: no-repeat;
+
+	display: inline-block;
+	pointer-events: none;
+	width: 30px;
+	height: 19px;
+	background-size: contain;
+
+	position: absolute;
+	top: 21px;
+	left: 72px;
+}
+
+/*	------------------------------------------------------------------
+		ヘッダアイコン変更 パズルのピース → 「の」
+	------------------------------------------------------------------ */
+div#wiki-header div.column-inner-3 {
+	position: relative;
+	height: 63px;
+	background: url(https://image02.seesaawiki.jp/k/h/kemono_friends3_5ch/sK7l2f_pAQ.png) no-repeat 0 0;
+}
+
+/*	------------------------------------------------------------------
+		見出しデザイン変更
+	------------------------------------------------------------------ */
+div.user-area div.title-1 h3 {
+	font-size:160%;
+}
+div.user-area div.title-2 h4 {
+	font-size:140%;
+}
+div.user-area div.title-3 h5 {
+}
+div.user-area div.title-2 {
+	padding:3px;
+	border-left:#82ac3f ridge 5px;
+	border-bottom:#ddd ridge 2px;
+}
+div.user-area div.title-3 {
+	margin-left:0.5em;
+	padding-left:0.5em;
+	border-left:#b3e7e3 solid 2px;
+	border-bottom:#ddd solid 1px;
+}
+
+/*	------------------------------------------------------------------
+		表のヘッダの背景色変更 #999 → #cccccc
+	------------------------------------------------------------------ */
+div.user-area table th {
+	background:#cccccc;
+}
+
+/*	------------------------------------------------------------------
+		差分表示
+	------------------------------------------------------------------ */
+/* 差分表示・追加/削除 */
+div.page-diff .line-add,
+div.page-diff .line-delete {
+	display: inline-block;
+	width : 100%;
+	min-height: 1.35em;
+}
+/* 差分表示・追加 */
+div.page-diff .line-add {
+	color: #001000;
+	background-color: #3fb95030;
+}
+/* 差分表示・削除 */
+div.page-diff .line-delete {
+	background-color: #f8514930;
+}
+/* 差分表示・囲み */
+div.page-diff div.diff-box {
+	border: #333 dashed 1px;
+}
+
+/*	------------------------------------------------------------------
+		ページ名検索 / ページ名から直接開く 余白調整
+	------------------------------------------------------------------ */
+#sub > div > div:nth-child(1) > div > div.body {
+	margin-bottom: 0px;
+}
+
+/*	------------------------------------------------------------------
+		折り畳み範囲ガイド線
+	------------------------------------------------------------------ */
+.toggle-display {
+	border-left: #C4C4C4 solid 1px;
+	margin-left: 8px !important;
+	padding-left: 15px !important;
+}
+
+/*	------------------------------------------------------------------
+		ページ一覧装飾
+	------------------------------------------------------------------ */
+ul.page-list > li.even {
+	background-color: #f4f4f4 !important;
+}
+
+ul.page-list > li {
+	margin-bottom: 0;
+}
+
+ul.page-list > li.even.last {
+	margin-bottom: 20px;
+}
+
+ul.page-list > li:hover {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+ul.page-list > li > a {
+	display: inline-block;
+	width: calc(100% - 370px);
+
+	text-decoration: inherit;
+	font-weight: inherit;
+}
+
+ul.page-list > li > span {
+	font-weight: normal;
+}
+
+ul.page-list > li > a,
+ul.page-list > li > span {
+	padding-top:  3px;
+	padding-bottom:  3px;
+}
+
+/*	------------------------------------------------------------------
+		横幅の大きい表を横スクロール可能に
+	------------------------------------------------------------------ */
+div:has(>table){
+	overflow-x: auto;
+	overflow-y: hidden;
+}
