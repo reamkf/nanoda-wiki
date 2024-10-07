@@ -451,4 +451,36 @@
 
 	JCT8836=JCT11280.substring(0,8836);
 	</script>
-	</div>
+	<script type="text/javascript">
+		// =====================================================================================
+		//  折り畳み範囲の最後に閉じるボタンを追加
+		// =====================================================================================
+		window.addEventListener("DOMContentLoaded", () => {
+			document.querySelectorAll("div:has(> .toggle-title)").forEach(r => {
+				const a = document.createElement("a");
+				a.innerHTML = "[閉じる]";
+				a.style.display = "inline";
+				a.style.color = "rgb(138, 36, 36)";
+				a.style.cursor = "pointer";
+
+				a.addEventListener("click", () => {
+					const headerHeight = 36;
+					const rect = r.getBoundingClientRect();
+					if(rect.y < headerHeight){
+						scrollBy({
+							top: rect.y - headerHeight - 5,
+							left: 0,
+							behavior : "smooth"
+						});
+					}
+					r.firstElementChild.firstElementChild.click();
+				});
+
+				const div = document.createElement("div");
+				div.style.marginTop = "10px";
+				div.append(a);
+				r.lastElementChild.append(div);
+			});
+		});
+	</script>
+</div>
