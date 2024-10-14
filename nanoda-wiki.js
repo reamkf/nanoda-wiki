@@ -4,11 +4,12 @@
 	async function main(){
 		const isMobile = checkIsMobile();
 
-		loadEncodingJS();
-		applyTableSorter();
-
 		if(isMobile) main_mobile();
 		else main_pc();
+
+		window.addEventListener('DOMContentLoaded', () => {
+			loadEncodingJS();
+		});
 	}
 	main();
 
@@ -19,7 +20,9 @@
 		addValOnMobile();
 		removeEmptyLineOnMobile();
 
-		window.addEventListener('DOMContentLoaded', enhanceMobileSearchFunctionality);
+		window.addEventListener('DOMContentLoaded', () => {
+			enhanceMobileSearchFunctionality();
+		});
 	}
 
 	function checkIsMobile() {
