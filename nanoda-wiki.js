@@ -140,8 +140,8 @@
 		const directOpenLabel = document.createElement('label');
 		const directOpenRadio = document.createElement('input');
 		directOpenRadio.type = 'radio';
-		directOpenRadio.name = 'search_target';
-		directOpenRadio.value = 'direct_open';
+		// directOpenRadio.name = 'search_target';
+		// directOpenRadio.value = 'direct_open';
 		directOpenLabel.appendChild(directOpenRadio);
 		directOpenLabel.appendChild(document.createTextNode(' 直接開く'));
 		directOpenLi.appendChild(directOpenLabel);
