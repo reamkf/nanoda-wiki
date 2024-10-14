@@ -169,6 +169,8 @@
 				} else {
 					searchForm.submit();
 				}
+			} else {
+				searchForm.submit();
 			}
 		});
 	}
