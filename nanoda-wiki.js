@@ -152,25 +152,19 @@
 
 		// フォーム送信時の動作を変更
 		searchForm.addEventListener('submit', function(e) {
-			e.preventDefault();
 			if (directOpenRadio.checked) {
+				e.preventDefault();
 				const keyword = keywordsInput.value;
 				openPageByName(keyword);
-			} else {
-				searchForm.submit();
 			}
 		});
 		searchForm.addEventListener('keydown', function(e) {
-			e.preventDefault();
 			if (e.key === 'Enter' || e.keyCode === 13) {
 				if (directOpenRadio.checked) {
+					e.preventDefault();
 					const keyword = keywordsInput.value;
 					openPageByName(keyword);
-				} else {
-					searchForm.submit();
 				}
-			} else {
-				searchForm.submit();
 			}
 		});
 	}
