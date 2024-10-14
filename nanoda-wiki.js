@@ -1,6 +1,26 @@
 // @ https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.1.1/nanoda-wiki.js
 
 (() => {
+	function main(){
+		const isMobile = checkIsMobile();
+
+		loadEncodingJS();
+
+		if(isMobile) main_mobile();
+		else main_pc();
+	}
+	main();
+
+	async function main_pc(){
+		applyTableSorter();
+	}
+
+	function main_mobile(){
+		addValOnMobile();
+		removeEmptyLineOnMobile();
+		enhanceMobileSearchFunctionality();
+	}
+
 	function checkIsMobile() {
 		// viewportメタタグの存在をチェック
 		var hasViewportMeta = document.querySelector('meta[name="viewport"]') !== null;
@@ -18,48 +38,31 @@
 			return window.innerWidth <= 640;
 		}
 	}
-	const isMobile = checkIsMobile();
 
-	/**
-	* 指定されたソースからスクリプトを読み込み、成功時と失敗時にそれぞれ解決または拒否されるPromiseを返します。
-	* @param {string} src - スクリプトのソースURL。
-	* @param {Object} attributes - スクリプト要素に追加する任意の属性。
-	* @returns {Promise<void>} スクリプトの読み込みの完了を示すPromise。
-	*/
-	function loadScript(src, attributes = {}) {
-		return new Promise((resolve, reject) => {
-			const script = document.createElement('script');
-			script.src = src;
 
-			// デフォルトでcrossorigin属性を設定
-			if (!attributes.hasOwnProperty('crossorigin')) {
-				script.crossOrigin = 'anonymous';
-			}
+	function encodeEUCJP(str) {
+        const eucjpArray = Encoding.convert(Encoding.stringToCode(str), 'EUCJP', 'UNICODE');
+        let result = '';
+        for (let i = 0; i < eucjpArray.length; i++) {
+            result += '%' + eucjpArray[i].toString(16).padStart(2, '0').toUpperCase();
+        }
+        return result;
+    }
 
-			// Set custom attributes
-			for (const [key, value] of Object.entries(attributes)) {
-				script.setAttribute(key, value);
-			}
-
-			script.onload = resolve;
-			script.onerror = reject;
-			document.head.appendChild(script);
-		});
+	async function loadEncodingJS() {
+		try {
+			await loadScript(
+				'https://cdnjs.cloudflare.com/ajax/libs/encoding-japanese/2.2.0/encoding.min.js',
+				{ integrity: 'sha512-CArsvKzWkJZ/SAmlxryxX1vinz8JpD6RqJJqVeD2MoP8kRuwh2hEzMQSl6OMoy0DkYiqW6VMWzqP/4cWoZgTDA==' }
+			);
+		} catch (error) {
+			console.error('Failed to load Encoding.js:', error);
+		}
 	}
 
-	function addCSS(css){
-		const style = document.createElement("style");
-		style.innerHTML = css;
-		document.head.append(style);
-	}
-
-	document.addEventListener('DOMContentLoaded', (event) => {
-		main();
-	});
-
-	if(isMobile){
+	function addValOnMobile(){
+		/* モバイル版 ヘッダロゴに[バル]を重ねる */
 		addCSS(`
-			/* ヘッダロゴに[バル]を重ねる */
 			div.logo > a:after {
 				content: "";
 				background-image: url(https://image02.seesaawiki.jp/k/h/kemono_friends3_5ch/LS9X7_9tnh.png);
@@ -76,8 +79,12 @@
 				left: 50vw;
 				z-index: 99999;
 			}
+		`);
+	}
 
-			/* 画像~~テキストで生じる余分な空行を削除 */
+	function removeEmptyLineOnMobile(){
+		/* 画像~~テキストで生じる余分な空行を削除 */
+		addCSS(`
 			.user-area figure + br {
 				display: none;
 			}
@@ -90,11 +97,49 @@
 		`);
 	}
 
+    async function enhanceMobileSearchFunctionality() {
+		await loadEncodingJS();
+
+        const searchForm = document.getElementById('internal-wiki-search');
+        const radioList = searchForm.querySelector('.form-radio');
+        const keywordsInput = searchForm.querySelector('input[name="keywords"]');
+
+        // ページ名検索をデフォルトで選択
+        const pageNameRadio = radioList.querySelector('input[value="page_name"]');
+        if (pageNameRadio) {
+            pageNameRadio.checked = true;
+        }
+
+        // 直接開くオプションを追加
+        const directOpenLi = document.createElement('li');
+        const directOpenLabel = document.createElement('label');
+        const directOpenRadio = document.createElement('input');
+        directOpenRadio.type = 'radio';
+        directOpenRadio.name = 'search_target';
+        directOpenRadio.value = 'direct_open';
+        directOpenLabel.appendChild(directOpenRadio);
+        directOpenLabel.appendChild(document.createTextNode(' 直接開く'));
+        directOpenLi.appendChild(directOpenLabel);
+
+        // ページ名とタグの間に直接開く選択肢を挿入
+        const tagLi = radioList.querySelector('input[value="tag"]').closest('li');
+        radioList.insertBefore(directOpenLi, tagLi);
+
+        // フォーム送信時の動作を変更
+        searchForm.addEventListener('submit', function(e) {
+            if (directOpenRadio.checked) {
+                e.preventDefault();
+                const keyword = keywordsInput.value;
+                const encodedKeyword = encodeEUCJP(keyword);
+                window.location.href = 'https://seesaawiki.jp/kemono_friends3_5ch/d/' + encodedKeyword;
+            }
+        });
+    }
+
 	// =====================================================================================
 	//  tablesorter
 	//  URL: https://cdnjs.com/libraries/jquery.tablesorter
 	// =====================================================================================
-
 	async function loadTableSorterScripts() {
 		const scripts = [
 			{
@@ -124,7 +169,7 @@
 		}
 	}
 
-	async function main() {
+	async function applyTableSorter() {
 		try {
 			// TableSorterスクリプトを読み込む
 			await loadTableSorterScripts();
@@ -557,5 +602,39 @@
 		} catch (error) {
 			console.error("Error in main function:", error);
 		}
+	}
+
+
+	/**
+	* 指定されたソースからスクリプトを読み込み、成功時と失敗時にそれぞれ解決または拒否されるPromiseを返します。
+	* @param {string} src - スクリプトのソースURL。
+	* @param {Object} attributes - スクリプト要素に追加する任意の属性。
+	* @returns {Promise<void>} スクリプトの読み込みの完了を示すPromise。
+	*/
+	function loadScript(src, attributes = {}) {
+		return new Promise((resolve, reject) => {
+			const script = document.createElement('script');
+			script.src = src;
+
+			// デフォルトでcrossorigin属性を設定
+			if (!attributes.hasOwnProperty('crossorigin')) {
+				script.crossOrigin = 'anonymous';
+			}
+
+			// Set custom attributes
+			for (const [key, value] of Object.entries(attributes)) {
+				script.setAttribute(key, value);
+			}
+
+			script.onload = resolve;
+			script.onerror = reject;
+			document.head.appendChild(script);
+		});
+	}
+
+	function addCSS(css){
+		const style = document.createElement("style");
+		style.innerHTML = css;
+		document.head.append(style);
 	}
 })();
