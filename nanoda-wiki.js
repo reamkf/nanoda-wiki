@@ -41,13 +41,13 @@
 
 
 	function encodeEUCJP(str) {
-        const eucjpArray = Encoding.convert(Encoding.stringToCode(str), 'EUCJP', 'UNICODE');
-        let result = '';
-        for (let i = 0; i < eucjpArray.length; i++) {
-            result += '%' + eucjpArray[i].toString(16).padStart(2, '0').toUpperCase();
-        }
-        return result;
-    }
+		const eucjpArray = Encoding.convert(Encoding.stringToCode(str), 'EUCJP', 'UNICODE');
+		let result = '';
+		for (let i = 0; i < eucjpArray.length; i++) {
+			result += '%' + eucjpArray[i].toString(16).padStart(2, '0').toUpperCase();
+		}
+		return result;
+	}
 
 	async function loadEncodingJS() {
 		try {
@@ -123,43 +123,43 @@
 		}
 	}
 
-    async function enhanceMobileSearchFunctionality() {
-        const searchForm = document.getElementById('internal-wiki-search');
-        const radioList = searchForm.querySelector('.form-radio');
-        const keywordsInput = searchForm.querySelector('input[name="keywords"]');
+	async function enhanceMobileSearchFunctionality() {
+		const searchForm = document.getElementById('internal-wiki-search');
+		const radioList = searchForm.querySelector('.form-radio');
+		const keywordsInput = searchForm.querySelector('input[name="keywords"]');
 
-        // ページ名検索をデフォルトで選択
-        const pageNameRadio = radioList.querySelector('input[value="page_name"]');
-        if (pageNameRadio) {
-            pageNameRadio.checked = true;
-        }
+		// ページ名検索をデフォルトで選択
+		const pageNameRadio = radioList.querySelector('input[value="page_name"]');
+		if (pageNameRadio) {
+			pageNameRadio.checked = true;
+		}
 
-        // 直接開くオプションを追加
-        const directOpenLi = document.createElement('li');
-        const directOpenLabel = document.createElement('label');
-        const directOpenRadio = document.createElement('input');
-        directOpenRadio.type = 'radio';
-        directOpenRadio.name = 'search_target';
-        directOpenRadio.value = 'direct_open';
-        directOpenLabel.appendChild(directOpenRadio);
-        directOpenLabel.appendChild(document.createTextNode(' 直接開く'));
-        directOpenLi.appendChild(directOpenLabel);
+		// 直接開くオプションを追加
+		const directOpenLi = document.createElement('li');
+		const directOpenLabel = document.createElement('label');
+		const directOpenRadio = document.createElement('input');
+		directOpenRadio.type = 'radio';
+		directOpenRadio.name = 'search_target';
+		directOpenRadio.value = 'direct_open';
+		directOpenLabel.appendChild(directOpenRadio);
+		directOpenLabel.appendChild(document.createTextNode(' 直接開く'));
+		directOpenLi.appendChild(directOpenLabel);
 
-        // ページ名とタグの間に直接開く選択肢を挿入
-        const tagLi = radioList.querySelector('input[value="tag"]').closest('li');
-        radioList.insertBefore(directOpenLi, tagLi);
+		// ページ名とタグの間に直接開く選択肢を挿入
+		const tagLi = radioList.querySelector('input[value="tag"]').closest('li');
+		radioList.insertBefore(directOpenLi, tagLi);
 
-        // フォーム送信時の動作を変更
-        searchForm.addEventListener('submit', function(e) {
+		// フォーム送信時の動作を変更
+		searchForm.addEventListener('submit', function(e) {
 			e.preventDefault();
-            if (directOpenRadio.checked) {
-                const keyword = keywordsInput.value;
+			if (directOpenRadio.checked) {
+				const keyword = keywordsInput.value;
 				openPageByName(keyword);
-            } else {
+			} else {
 				searchForm.submit();
 			}
-        });
-    }
+		});
+	}
 
 	// =====================================================================================
 	//  tablesorter
