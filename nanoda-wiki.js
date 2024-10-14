@@ -5,6 +5,7 @@
 		const isMobile = checkIsMobile();
 
 		loadEncodingJS();
+		applyTableSorter();
 
 		if(isMobile) main_mobile();
 		else main_pc();
@@ -12,7 +13,6 @@
 	main();
 
 	async function main_pc(){
-		applyTableSorter();
 	}
 
 	function main_mobile(){
