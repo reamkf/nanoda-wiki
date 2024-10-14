@@ -1,8 +1,8 @@
 param(
-    [Parameter(Mandatory=$false)]
-    [string]$OutputFile = '.\inject.txt',
+    [Parameter(Position=0, Mandatory=$false)]
+    [string]$CommitHash,
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Position=1, Mandatory=$false)]
     [ValidateSet("sha256", "sha384", "sha512")]
     [string]$HashAlgorithm = "sha384"
 )
@@ -46,14 +46,16 @@ function Get-SRIHash {
     }
 }
 
-# Get the latest commit hash
-$latestHash = Get-LatestCommitHash
+# Get the commit hash (use provided hash or get the latest)
+if ([string]::IsNullOrEmpty($CommitHash)) {
+    $CommitHash = Get-LatestCommitHash
+}
 
 # Construct the CDN URL
 $repoUrl = "https://github.com/reamkf/nanoda-wiki"
 $cdnUrl = $repoUrl -replace "https://github.com/", "https://cdn.jsdelivr.net/gh/"
 $cdnUrl = $cdnUrl -replace "/$", ""
-$cdnUrl += "@$latestHash/nanoda-wiki.js"
+$cdnUrl += "@$CommitHash/nanoda-wiki.js"
 
 # Calculate SRI hash
 $sriHash = Get-SRIHash -Url $cdnUrl -Algorithm $HashAlgorithm
@@ -63,12 +65,5 @@ $scriptTag = @"
 <meta name="google-site-verification" content="q6H0qChDSXhbyT2OZJ2OMDZ_3VWAkE8Ccd-BRjHEEgU" /><script src="$cdnUrl" integrity="$sriHash" crossorigin="anonymous"></script>
 "@
 
-# Write to output file
-try {
-    $scriptTag | Out-File -FilePath $OutputFile -Encoding UTF8
-    Write-Host "Script tag with SRI hash has been written to $OutputFile"
-}
-catch {
-    Write-Error "Error writing to file: $_"
-    exit 1
-}
+# Output to console
+Write-Output $scriptTag
