@@ -1,7 +1,7 @@
 // @ https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@0.1.1/nanoda-wiki.js
 
 (() => {
-	function main(){
+	async function main(){
 		const isMobile = checkIsMobile();
 
 		loadEncodingJS();
@@ -124,7 +124,6 @@
 	}
 
 	async function enhanceMobileSearchFunctionality() {
-		await loadEncodingJS();
 		const searchForm = document.getElementById('internal-wiki-search');
 		const radioList = searchForm.querySelector('.form-radio');
 		const keywordsInput = searchForm.querySelector('input[name="keywords"]');
