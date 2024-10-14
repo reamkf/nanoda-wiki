@@ -153,19 +153,25 @@
 		// フォーム送信時の動作を変更
 		searchForm.addEventListener('submit', function(e) {
 			e.preventDefault();
+			alert('submit');
 			if (directOpenRadio.checked) {
+				alert('directOpenRadio checked');
 				const keyword = keywordsInput.value;
 				openPageByName(keyword);
 			} else {
+				alert('directOpenRadio not checked');
 				searchForm.submit();
 			}
 		});
 		searchForm.addEventListener('keydown', function(e) {
 			if (e.key === 'Enter' || e.keyCode === 13) {
+				alert('Enter key pressed');
 				if (directOpenRadio.checked) {
+					alert('directOpenRadio checked');
 					const keyword = keywordsInput.value;
 					openPageByName(keyword);
 				} else {
+					alert('directOpenRadio not checked');
 					searchForm.submit();
 				}
 			}
