@@ -18,7 +18,8 @@
 	function main_mobile(){
 		addValOnMobile();
 		removeEmptyLineOnMobile();
-		enhanceMobileSearchFunctionality();
+
+		window.addEventListener('DOMContentLoaded', enhanceMobileSearchFunctionality);
 	}
 
 	function checkIsMobile() {
