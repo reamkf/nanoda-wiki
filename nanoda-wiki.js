@@ -8,7 +8,7 @@
 		else main_pc();
 
 		window.addEventListener('DOMContentLoaded', () => {
-			loadEncodingJS();
+			applyTableSorter();
 		});
 	}
 	main();
