@@ -124,8 +124,6 @@
 	}
 
     async function enhanceMobileSearchFunctionality() {
-		await loadEncodingJS();
-
         const searchForm = document.getElementById('internal-wiki-search');
         const radioList = searchForm.querySelector('.form-radio');
         const keywordsInput = searchForm.querySelector('input[name="keywords"]');
@@ -153,11 +151,13 @@
 
         // フォーム送信時の動作を変更
         searchForm.addEventListener('submit', function(e) {
+			e.preventDefault();
             if (directOpenRadio.checked) {
-                e.preventDefault();
                 const keyword = keywordsInput.value;
 				openPageByName(keyword);
-            }
+            } else {
+				searchForm.submit();
+			}
         });
     }
 
