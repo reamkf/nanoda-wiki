@@ -128,6 +128,7 @@
 	}
 
 	async function enhanceMobileSearchFunctionality() {
+		await loadEncodingJS();
 		const searchForm = document.getElementById('internal-wiki-search');
 		const radioList = searchForm.querySelector('.form-radio');
 		const keywordsInput = searchForm.querySelector('input[name="keywords"]');
