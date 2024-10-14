@@ -160,6 +160,16 @@
 				searchForm.submit();
 			}
 		});
+		searchForm.addEventListener('keydown', function(e) {
+			if (e.key === 'Enter' || e.keyCode === 13) {
+				if (directOpenRadio.checked) {
+					const keyword = keywordsInput.value;
+					openPageByName(keyword);
+				} else {
+					searchForm.submit();
+				}
+			}
+		});
 	}
 
 	// =====================================================================================
