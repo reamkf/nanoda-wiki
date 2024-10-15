@@ -633,7 +633,7 @@
 
 
 		} catch (error) {
-			console.error("Error in main function:", error);
+			console.error("Error in applyTableSorter():", error);
 		}
 	}
 
@@ -665,6 +665,10 @@
 		});
 	}
 
+	/**
+	 * CSSを動的に追加します。
+	 * @param {string} css - 追加するCSSコード。
+	 */
 	function addCSS(css){
 		const style = document.createElement("style");
 		style.innerHTML = css;
