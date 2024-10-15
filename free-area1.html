@@ -31,7 +31,7 @@
 		function openPageByName(pageName, openInNewTab = false){
 			if(pageName != ""){
 				pageName = convertCharRef(pageName)
-				pageName = EscapeEUCJP(pageName)
+				pageName = EscapeEUCJP(pageName).toLowerCase();
 				const url = "https://seesaawiki.jp/kemono_friends3_5ch/d/" + pageName;
 
 				if(openInNewTab) window.open(url);

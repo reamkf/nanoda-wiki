@@ -46,11 +46,7 @@
 
 	function encodeEUCJP(str) {
 		const eucjpArray = Encoding.convert(Encoding.stringToCode(str), 'EUCJP', 'UNICODE');
-		let result = '';
-		for (let i = 0; i < eucjpArray.length; i++) {
-			result += '%' + eucjpArray[i].toString(16).padStart(2, '0').toUpperCase();
-		}
-		return result;
+		return eucjpArray.map(byte => '%' + byte.toString(16).padStart(2, '0')).join('');
 	}
 
 	async function loadEncodingJS() {
