@@ -62,8 +62,9 @@ $sriHash = Get-SRIHash -Url $cdnUrl -Algorithm $HashAlgorithm
 
 # Generate script tag
 $scriptTag = @"
-<meta name="google-site-verification" content="q6H0qChDSXhbyT2OZJ2OMDZ_3VWAkE8Ccd-BRjHEEgU" /><script src="$cdnUrl" integrity="$sriHash" crossorigin="anonymous"></script>
+q6H0qChDSXhbyT2OZJ2OMDZ_3VWAkE8Ccd-BRjHEEgU" /><script src="$cdnUrl" integrity="$sriHash" crossorigin="anonymous"></script><meta dummy="
 "@
+# Sample output: q6H0qChDSXhbyT2OZJ2OMDZ_3VWAkE8Ccd-BRjHEEgU" /><script src="https://cdn.jsdelivr.net/gh/reamkf/nanoda-wiki@37a1b04/nanoda-wiki.js" integrity="sha384-D9SQTVW3yzM3MhEBSwsxhmMT+TDyQRwBTS4319+b4dZrhtQnHq3mXwWsioaZNeCw" crossorigin="anonymous"></script><meta dummy="
 
 # Output to console
 Write-Output $scriptTag
