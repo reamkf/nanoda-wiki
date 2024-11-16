@@ -203,12 +203,15 @@
 	}
 
 	function disableTableSorter() {
+		// CSSを無効化
+		disableStylesheet('jquery.tablesorter.min.js')
+
 		$('table').each(function() {
 			const $table = $(this);
 			$table.find('thead th').each(function() {
 				var $th = $(this);
 
-				// すべてのイベントを削除
+				// イベントリスナーを削除
 				$th.unbind().off();
 
 				// スタイルをリセット
@@ -728,5 +731,10 @@
 		const style = document.createElement("style");
 		style.innerHTML = css;
 		document.head.append(style);
+	}
+
+	function disableStylesheet(href) {
+		const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
+		links.filter(link => link.href.includes(href)).forEach(link => link.disabled = true);
 	}
 })();
