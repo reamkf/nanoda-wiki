@@ -268,10 +268,10 @@
 				}).appendTo($divInputTableFilter);
 
 				// Reset button
-				const $resetButton = $("<button>", {
-					text: "リセット",
-					"class": "reset-table-filter",
-				}).appendTo($divInputTableFilter);
+				// const $resetButton = $("<button>", {
+				// 	text: "リセット",
+				// 	"class": "reset-table-filter",
+				// }).appendTo($divInputTableFilter);
 
 				$table.before($divInputTableFilter);
 
