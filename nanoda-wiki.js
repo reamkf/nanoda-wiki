@@ -302,6 +302,9 @@
 				// });
 
 
+				$table.find('th').each(function() {
+					$(this).addClass('tablesorter-blue');
+				});
 
 				$table.tablesorter({
 					theme: 'blue',
