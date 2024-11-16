@@ -257,23 +257,23 @@
 				// External any-column search
 				const $divInputTableFilter = $("<div>", {
 					"class": "input-table-filter input-table-filter-ex",
-					style: "width: 400px"
+					style: "width: 400px; display: flex; align-items: center;"
 				});
 
 				const $inputTableFilter = $("<input>", {
 					type: "search",
 					placeholder: "キーワードで絞り込み",
 					"data-column": "all",
-					style: "width: 100%; background-color: white;",
+					style: "flex: 1; background-color: white; margin-right: 10px;",
 				}).appendTo($divInputTableFilter);
-
-				$table.before($divInputTableFilter);
 
 				// Reset button
 				const $resetButton = $("<button>", {
 					text: "リセット",
 					"class": "reset-table-filter",
 				}).appendTo($divInputTableFilter);
+
+				$table.before($divInputTableFilter);
 
 				// Drop down menu
 				const filterFunc = null;
