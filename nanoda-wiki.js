@@ -214,7 +214,6 @@
 				// スタイルをリセット
 				$th.css({
 					'cursor': 'default',
-					'background-image': 'none'
 				});
 
 				// データ属性を削除
@@ -301,6 +300,8 @@
 				//     }
 				//     i++;
 				// });
+
+
 
 				$table.tablesorter({
 					theme: 'blue',
