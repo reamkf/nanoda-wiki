@@ -251,7 +251,46 @@
 			// TableSorterスクリプトを読み込む
 			await loadTableSorterScripts();
 
-			// スクリプト読み込み完了後の処理をここに記述
+			// 日付+テキストのパーサー追加
+			$.tablesorter.addParser({
+				id: 'dateWithText',
+				is: function(s) {
+					// yyyy/mm/dd, yyyy-mm-dd, yyyy年mm月dd日 の形式を検出
+					// 0埋めありなしどちらにも対応
+					const datePattern = /^\s*(\d{4})[\/\-年](\d{1,2})[\/\-月](\d{1,2})[日]?/;
+
+					// 先頭の空白を無視して日付形式かどうかをチェック
+					return datePattern.test(s.trim());
+				},
+				format: function(s) {
+					const datePattern = /(\d{4})[\/\-年](\d{1,2})[\/\-月](\d{1,2})[日]?/;
+
+					const match = s.match(datePattern);
+					if (match) {
+						// 年月日を取得
+						const year = parseInt(match[1], 10);
+						const month = parseInt(match[2], 10) - 1; // JavaScriptの月は0始まり
+						const day = parseInt(match[3], 10);
+
+						// 不正な日付をチェック
+						if (month < 0 || month > 11 || day < 1 || day > 31) {
+							return 0;
+						}
+
+						// 日付オブジェクトを作成
+						const date = new Date(year, month, day);
+
+						// 実際に存在する日付かどうかを確認
+						if (date.getFullYear() === year &&
+							date.getMonth() === month &&
+							date.getDate() === day) {
+							return date.getTime();
+						}
+					}
+					return 0; // 日付が見つからないか不正な場合は0を返す
+				},
+				type: 'numeric'
+			});
 
 			$("table.filter").each(function(i){
 				const $table = $(this);
