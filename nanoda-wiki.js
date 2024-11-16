@@ -204,7 +204,7 @@
 
 	function disableTableSorter() {
 		// CSSを無効化
-		disableStylesheet('jquery.tablesorter.min.js')
+		disableStylesheet('js/wiki_plugin/tablesorter/themes/pc/style.css')
 
 		$('table').each(function() {
 			const $table = $(this);
@@ -493,7 +493,7 @@
 				.tablesorter-blue .header,
 				.tablesorter-blue .tablesorter-header {
 					/* black (unsorted) double arrow */
-					background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
+					background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==) !important;
 					/* white (unsorted) double arrow */
 					/* background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAAP///////yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==); */
 					/* image */
@@ -509,7 +509,7 @@
 				.tablesorter-blue .tablesorter-headerAsc {
 					background-color: #9fbfdf;
 					/* black asc arrow */
-					background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
+					background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7) !important;
 					/* white asc arrow */
 					/* background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7); */
 					/* image */
@@ -520,7 +520,7 @@
 				.tablesorter-blue .tablesorter-headerDesc {
 					background-color: #8cb3d9;
 					/* black desc arrow */
-					background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+					background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7) !important;
 					/* white desc arrow */
 					/* background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7); */
 					/* image */
