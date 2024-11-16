@@ -202,8 +202,49 @@
 		}
 	}
 
+	function disableTableSorter() {
+		$('table').each(function() {
+			$table.find('thead th').each(function() {
+				var $th = $(this);
+
+				// すべてのイベントを削除
+				$th.unbind().off();
+
+				// スタイルをリセット
+				$th.css({
+					'cursor': 'default',
+					'background-image': 'none'
+				});
+
+				// データ属性を削除
+				$th.removeData();
+			});
+
+			// テーブル自体のデータと属性を削除
+			$table.removeData();
+		});
+
+
+		// jQueryプラグインを無効化
+		$.fn.tablesorter = function() {	return this; };
+		$.tablesorter = {};
+	}
+
 	async function applyTableSorter() {
 		try {
+			// $.fn.tablesorterが利用可能になるまで待機
+			await new Promise(resolve => {
+				const intervalId = setInterval(() => {
+					if ($.fn.tablesorter) {
+						clearInterval(intervalId);
+						resolve();
+					}
+				}, 100);
+			});
+
+			// 既存のtablesorterをすべて無効化
+			disableTableSorter();
+
 			// TableSorterスクリプトを読み込む
 			await loadTableSorterScripts();
 
