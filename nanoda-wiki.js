@@ -204,6 +204,7 @@
 
 	function disableTableSorter() {
 		$('table').each(function() {
+			const $table = $(this);
 			$table.find('thead th').each(function() {
 				var $th = $(this);
 
