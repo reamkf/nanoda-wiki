@@ -321,21 +321,23 @@
 					// hidden filter input/selects will resize the columns, so try to minimize the change
 					widthFixed : false,
 
-					// initialize filter widgets
-					widgets: ["filter"],
 
 					ignoreCase: true,
 
+					// 3回クリック時にソートをリセット
 					sortReset: true,
+
+					// 最初にソートしたときのソート順
+					sortInitialOrder: 'desc',
+
+					// 空白行のソート位置を最下部に変更
+					emptyTo: 'bottom',
+
+					// initialize filter widgets
+					widgets: ["filter"],
 
 					widgetOptions : {
 						// filter_anyMatch options was removed in v2.15; it has been replaced by the filter_external option
-
-						// 空白行のソート位置を最下部に変更
-						emptyTo: 'bottom',
-
-						// 最初にソートしたときのソート順
-						sortInitialOrder: 'desc',
 
 						// If there are child rows in the table (rows with class name from "cssChildRow" option)
 						// and this option is true and a match is found anywhere in the child row, then it will make that row
