@@ -269,6 +269,12 @@
 
 				$table.before($divInputTableFilter);
 
+				// Reset button
+				const $resetButton = $("<button>", {
+					text: "リセット",
+					"class": "reset-table-filter",
+				}).appendTo($divInputTableFilter);
+
 				// Drop down menu
 				const filterFunc = null;
 				// const filterFunc = {};
@@ -397,7 +403,7 @@
 						filter_placeholder : { search : '検索', select : '選択' },
 
 						// jQuery selector string of an element used to reset the filters
-						filter_reset : 'button.reset',
+						filter_reset : 'button.reset-table-filter',
 
 						// Reset filter input when the user presses escape - normalized across browsers
 						filter_resetOnEsc : true,
