@@ -324,6 +324,9 @@
 					widgetOptions : {
 						// filter_anyMatch options was removed in v2.15; it has been replaced by the filter_external option
 
+						// Empty colums position
+						emptyTo: 'bottom',
+
 						// If there are child rows in the table (rows with class name from "cssChildRow" option)
 						// and this option is true and a match is found anywhere in the child row, then it will make that row
 						// visible; default is false
