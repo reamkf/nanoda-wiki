@@ -551,7 +551,7 @@
 				.tablesorter-blue .headerSortUp,
 				.tablesorter-blue .tablesorter-headerSortUp,
 				.tablesorter-blue .tablesorter-headerAsc {
-					background-color: #9fbfdf;
+					background-color: #9fbfdf !important;
 					/* black asc arrow */
 					background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7) !important;
 					/* white asc arrow */
@@ -562,7 +562,7 @@
 				.tablesorter-blue .headerSortDown,
 				.tablesorter-blue .tablesorter-headerSortDown,
 				.tablesorter-blue .tablesorter-headerDesc {
-					background-color: #8cb3d9;
+					background-color: #8cb3d9 !important;
 					/* black desc arrow */
 					background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7) !important;
 					/* white desc arrow */
