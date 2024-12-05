@@ -546,7 +546,7 @@
 					background-position: center right;
 					padding: 4px 18px 4px 4px;
 					white-space: normal;
-					cursor: pointer;
+					cursor: pointer !important;
 				}
 				.tablesorter-blue .headerSortUp,
 				.tablesorter-blue .tablesorter-headerSortUp,
@@ -571,8 +571,8 @@
 					/* background-image: url(images/black-desc.gif); */
 				}
 				.tablesorter-blue thead .sorter-false {
-					background-image: none;
-					cursor: default;
+					background-image: none !important;
+					cursor: default !important;
 					padding: 4px;
 				}
 
