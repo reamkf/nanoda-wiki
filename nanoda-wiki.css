@@ -887,8 +887,8 @@ div.tagcloud span {}
 ---------------------------------------------------------------------------------------------------------------- */
 
 /*	------------------------------------------------------------------
-		ヘッダロゴに[バル]を重ねる
-	------------------------------------------------------------------ */
+	ヘッダロゴに[バル]を重ねる
+------------------------------------------------------------------ */
 div#common-header .header-logo:after {
 	content: "";
 	background-image: url(https://image02.seesaawiki.jp/k/h/kemono_friends3_5ch/LS9X7_9tnh.png);
@@ -906,8 +906,8 @@ div#common-header .header-logo:after {
 }
 
 /*	------------------------------------------------------------------
-		ヘッダアイコン変更 パズルのピース → 「の」
-	------------------------------------------------------------------ */
+	ヘッダアイコン変更 パズルのピース → 「の」
+------------------------------------------------------------------ */
 div#wiki-header div.column-inner-3 {
 	position: relative;
 	height: 63px;
@@ -915,8 +915,8 @@ div#wiki-header div.column-inner-3 {
 }
 
 /*	------------------------------------------------------------------
-		見出しデザイン変更
-	------------------------------------------------------------------ */
+	見出しデザイン変更
+------------------------------------------------------------------ */
 div.user-area div.title-1 h3 {
 	font-size:160%;
 }
@@ -938,15 +938,15 @@ div.user-area div.title-3 {
 }
 
 /*	------------------------------------------------------------------
-		表のヘッダの背景色変更 #999 → #cccccc
-	------------------------------------------------------------------ */
+	表のヘッダの背景色変更 #999 → #cccccc
+------------------------------------------------------------------ */
 div.user-area table th {
 	background:#cccccc;
 }
 
 /*	------------------------------------------------------------------
-		差分表示
-	------------------------------------------------------------------ */
+	差分表示
+------------------------------------------------------------------ */
 /* 差分表示・追加/削除 */
 div.page-diff .line-add,
 div.page-diff .line-delete {
@@ -969,15 +969,15 @@ div.page-diff div.diff-box {
 }
 
 /*	------------------------------------------------------------------
-		ページ名検索 / ページ名から直接開く 余白調整
-	------------------------------------------------------------------ */
+	ページ名検索 / ページ名から直接開く 余白調整
+------------------------------------------------------------------ */
 #sub > div > div:nth-child(1) > div > div.body {
 	margin-bottom: 0px;
 }
 
 /*	------------------------------------------------------------------
-		引用記法の見た目をスマホ版に合わせる
-	------------------------------------------------------------------ */
+	引用記法の見た目をスマホ版に合わせる
+------------------------------------------------------------------ */
 .user-area blockquote {
 	line-height: 1.3;
 	padding: 10px;
@@ -989,8 +989,8 @@ div.page-diff div.diff-box {
 }
 
 /*	------------------------------------------------------------------
-		折り畳み範囲ガイド線
-	------------------------------------------------------------------ */
+	折り畳み範囲ガイド線
+------------------------------------------------------------------ */
 .toggle-display {
 	border-left: #C4C4C4 solid 1px;
 	margin-left: 8px !important;
@@ -998,8 +998,8 @@ div.page-diff div.diff-box {
 }
 
 /*	------------------------------------------------------------------
-		ページ一覧装飾
-	------------------------------------------------------------------ */
+	ページ一覧装飾
+------------------------------------------------------------------ */
 ul.page-list > li.even {
 	background-color: #f4f4f4 !important;
 }
@@ -1036,9 +1036,21 @@ ul.page-list > li > span {
 }
 
 /*	------------------------------------------------------------------
-		横幅の大きい表を横スクロール可能に
-	------------------------------------------------------------------ */
+	横幅の大きい表を横スクロール可能に
+------------------------------------------------------------------ */
 div:has(>table){
 	overflow-x: auto;
 	overflow-y: hidden;
+}
+
+
+/*	------------------------------------------------------------------
+	コメントグッドボタン表示不具合対応
+------------------------------------------------------------------ */
+div#comment-box div.body div.text div.good-btn span.ico:before {
+	content: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjE2cHgiIHdpZHRoPSIxNnB4IiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIg0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8Zz4NCgkJPGc+DQoJCQk8cGF0aCBkPSJNNDk1LjczNiwyOTAuNzczQzUwOS4zOTcsMjgyLjMxNyw1MTIsMjY5LjM5Nyw1MTIsMjYwLjc5NmMwLTIyLjQtMTguMjUzLTQ3LjQ2Mi00Mi42NjctNDcuNDYySDM0OS45MTgNCgkJCQljLTQuMjg0LTAuMDUxLTI1LjY1MS0xLjUxLTI1LjY1MS0yNS42YzAtNC43MS0zLjgxNC04LjUzMy04LjUzMy04LjUzM3MtOC41MzMsMy44MjMtOC41MzMsOC41MzMNCgkJCQljMCwzMy43NDksMjcuOTEzLDQyLjY2Nyw0Mi42NjcsNDIuNjY3aDExOS40NjdjMTQuMTgyLDAsMjUuNiwxNi42MzEsMjUuNiwzMC4zOTZjMCw0LjQzNywwLDE3Ljk0Ni0yNi41MywyMC44NTUNCgkJCQljLTQuNTA2LDAuNDk1LTcuODM0LDQuNDItNy41ODYsOC45NTFjMC4yMzksNC41MjMsMy45ODUsOC4wNjQsOC41MTYsOC4wNjRjMTQuMTE0LDAsMjUuNiwxMS40ODYsMjUuNiwyNS42DQoJCQkJcy0xMS40ODYsMjUuNi0yNS42LDI1LjZoLTE3LjA2N2MtNC43MTksMC04LjUzMywzLjgyMy04LjUzMyw4LjUzM3MzLjgxNCw4LjUzMyw4LjUzMyw4LjUzM2MxNC4xMTQsMCwyNS42LDExLjQ4NiwyNS42LDI1LjYNCgkJCQlzLTExLjQ4NiwyNS42LTI1LjYsMjUuNmgtMjUuNmMtNC43MTksMC04LjUzMywzLjgyMy04LjUzMyw4LjUzM3MzLjgxNCw4LjUzMyw4LjUzMyw4LjUzM2M4LjkzNCwwLDE3LjA2Nyw4LjEzMiwxNy4wNjcsMTcuMDY3DQoJCQkJYzAsOC42MS04LjQ0OCwxNy4wNjctMTcuMDY3LDE3LjA2N2gtMTI4Yy0zNS42MjcsMC00OC40NDQtNy4wNzQtNjMuMjkyLTE1LjI1OGMtMTIuNTUzLTYuOTIxLTI2Ljc4Ni0xNC43NjMtNTQuOTYzLTE4Ljc5DQoJCQkJYy00LjY2OC0wLjY3NC04Ljk5NCwyLjU3Ny05LjY2LDcuMjM2Yy0wLjY2Niw0LjY2OCwyLjU2OSw4Ljk5NCw3LjIzNiw5LjY2YzI1LjEwNSwzLjU4NCwzNy4zMjUsMTAuMzI1LDQ5LjE1MiwxNi44NDUNCgkJCQljMTUuNDk3LDguNTQyLDMxLjUwNSwxNy4zNzQsNzEuNTI2LDE3LjM3NGgxMjhjMTcuODY5LDAsMzQuMTMzLTE2LjI3MywzNC4xMzMtMzQuMTMzYzAtNi4yMjktMS43NzUtMTIuMTM0LTQuODMtMTcuMjI5DQoJCQkJYzIxLjc5NC0xLjg3NywzOC45NjMtMjAuMjI0LDM4Ljk2My00Mi41MDVjMC0xMC44MjktNC4wNjItMjAuNzM2LTEwLjczNS0yOC4yNzFDNTAwLjQyLDM1OC4yMTIsNTEyLDM0Mi41NzEsNTEyLDMyNC4yNjcNCgkJCQlDNTEyLDMxMC42OTksNTA1LjYzNCwyOTguNTksNDk1LjczNiwyOTAuNzczeiIvPg0KCQkJPHBhdGggZD0iTTc2LjgsNDQzLjczM2M5LjQxMiwwLDE3LjA2Ny03LjY1NCwxNy4wNjctMTcuMDY3Uzg2LjIxMiw0MDkuNiw3Ni44LDQwOS42Yy05LjQxMiwwLTE3LjA2Nyw3LjY1NC0xNy4wNjcsMTcuMDY3DQoJCQkJUzY3LjM4OCw0NDMuNzMzLDc2LjgsNDQzLjczM3oiLz4NCgkJCTxwYXRoIGQ9Ik0xNzkuMiwyNDcuNDY3YzI1LjM1MywwLDU3LjQyOS0yOC4yOTcsNzQuMy00NS4xNjdjMzYuNjM0LTM2LjYzNCwzNi42MzQtODIuMTY3LDM2LjYzNC0xNTEuMQ0KCQkJCWMwLTUuMzQyLDMuMTkxLTguNTMzLDguNTMzLTguNTMzYzI5LjUwOCwwLDQyLjY2NywxMy4xNTgsNDIuNjY3LDQyLjY2N3YxMDIuNGMwLDQuNzEsMy44MTQsOC41MzMsOC41MzMsOC41MzMNCgkJCQlzOC41MzMtMy44MjMsOC41MzMtOC41MzN2LTEwMi40YzAtMzkuMDgzLTIwLjY1OS01OS43MzMtNTkuNzMzLTU5LjczM2MtMTQuODMxLDAtMjUuNiwxMC43NjktMjUuNiwyNS42DQoJCQkJYzAsNjYuOTc4LDAsMTA3LjQwMS0zMS42MzMsMTM5LjAzNEMyMTYuNjYxLDIxNS4wMDYsMTkyLjgxMSwyMzAuNCwxNzkuMiwyMzAuNGMtNC43MTksMC04LjUzMywzLjgyMy04LjUzMyw4LjUzMw0KCQkJCVMxNzQuNDgxLDI0Ny40NjcsMTc5LjIsMjQ3LjQ2N3oiLz4NCgkJCTxwYXRoIGQ9Ik0xNDUuMDY3LDIxMy4zMzNIOC41MzNjLTQuNzE5LDAtOC41MzMsMy44MjMtOC41MzMsOC41MzN2MjU2YzAsNC43MSwzLjgxNCw4LjUzMyw4LjUzMyw4LjUzM2gxMzYuNTMzDQoJCQkJYzQuNzE5LDAsOC41MzMtMy44MjMsOC41MzMtOC41MzN2LTI1NkMxNTMuNiwyMTcuMTU2LDE0OS43ODYsMjEzLjMzMywxNDUuMDY3LDIxMy4zMzN6IE0xMzYuNTMzLDQ2OS4zMzNIMTcuMDY3VjIzMC40aDExOS40NjcNCgkJCQlWNDY5LjMzM3oiLz4NCgkJPC9nPg0KCTwvZz4NCjwvZz4NCjwvc3ZnPg==");
+	display: inline-block;
+	vertical-align: middle;
+	height: 16px;
+	width: 16px;
 }
