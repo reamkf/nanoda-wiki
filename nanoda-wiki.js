@@ -7,9 +7,12 @@
 		if(isMobile) main_mobile();
 		else main_pc();
 
-		window.addEventListener('DOMContentLoaded', () => {
-			applyTableSorter();
-		});
+		const url = new URL(window.location.href);
+		if(!url.pathname.includes('/e/edit')){
+			window.addEventListener('DOMContentLoaded', () => {
+				applyTableSorter();
+			});
+		}
 	}
 	main();
 
